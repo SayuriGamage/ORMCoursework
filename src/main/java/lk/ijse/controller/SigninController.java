@@ -44,6 +44,7 @@ public class SigninController {
           }
           UserDTO admin = new UserDTO(username, email, encryptedPassword, "admin");
 
+
           boolean result =userbo.registerAdmin(admin);
 
           if (result) {

@@ -32,7 +32,7 @@ public class LoginContoller {
          if(userdao.ifHaveAdmins()){
              new Alert(Alert.AlertType.ERROR,"already have admin").show();
          } else {
-             AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/registration.fxml"));
+             AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/signin.fxml"));
              Scene scene=new Scene(rootNode);
              Stage stage= (Stage) registerlink.getScene().getWindow();
              stage.setScene(scene);
