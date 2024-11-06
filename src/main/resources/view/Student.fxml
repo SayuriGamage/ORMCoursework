@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="studenttbl" prefHeight="783.0" prefWidth="1000.0" style="-fx-background-color: #003161;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.StudentController">
+   <children>
+      <Label layoutX="398.0" layoutY="41.0" text="Student Form" textFill="WHITE">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="46.0" layoutY="146.0" prefHeight="262.0" prefWidth="902.0" style="-fx-border-color: #384B70FF;">
+         <children>
+            <TextField fx:id="stname" layoutX="90.0" layoutY="57.0" prefHeight="34.0" prefWidth="272.0" />
+            <TextField fx:id="staddress" layoutX="90.0" layoutY="140.0" prefHeight="34.0" prefWidth="272.0" />
+            <TextField fx:id="sttell" layoutX="531.0" layoutY="57.0" prefHeight="34.0" prefWidth="272.0" />
+            <TextField fx:id="stusid" layoutX="531.0" layoutY="140.0" prefHeight="34.0" prefWidth="272.0" />
+            <Label layoutX="96.0" layoutY="23.0" text="Full Name" textFill="#c6c5cf">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="531.0" layoutY="23.0" text="Tell Number" textFill="#c0bfc9">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="119.0" textFill="#1b1751">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="531.0" layoutY="105.0" text="User_ID" textFill="#babac4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="96.0" layoutY="105.0" text="Address" textFill="#d1d9d1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="289.0" layoutY="197.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="41.0" prefWidth="127.0" style="-fx-background-color: #29cf26;" text="Add" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="467.0" layoutY="197.0" mnemonicParsing="false" onAction="#updateOnAction" prefHeight="41.0" prefWidth="127.0" style="-fx-background-color: #345dcf;" text="update" textFill="#e9ecf4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <TableView layoutX="50.0" layoutY="457.0" prefHeight="314.0" prefWidth="902.0">
+        <columns>
+          <TableColumn fx:id="sttblname" prefWidth="221.60001754760742" text="Full Name" />
+          <TableColumn fx:id="sttblmobile" prefWidth="198.39996337890625" text="Mobile Number" />
+            <TableColumn fx:id="sttbladdress" prefWidth="315.20001220703125" text="Address" />
+            <TableColumn fx:id="sttbluserId" prefWidth="164.80002441406248" text="User_Id" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

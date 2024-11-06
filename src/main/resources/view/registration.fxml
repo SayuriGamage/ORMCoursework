@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.RegistrationController">
+   <children>
+      <Label layoutX="382.0" layoutY="42.0" text="Registration Form" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="53.0" layoutY="138.0" prefHeight="341.0" prefWidth="903.0" style="-fx-background-radius: 50; -fx-opacity: 1; -fx-border-color: #ffffff;">
+         <children>
+            <ComboBox fx:id="courseid" layoutX="45.0" layoutY="127.0" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="coursename" layoutX="354.0" layoutY="127.0" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="amount" layoutX="637.0" layoutY="127.0" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="upfrontpayment" layoutX="45.0" layoutY="201.0" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="totalpayment" layoutX="354.0" layoutY="201.0" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="mobile" layoutX="354.0" layoutY="58.0" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="regisid" layoutX="45.0" layoutY="58.0" prefHeight="34.0" prefWidth="222.0" />
+            <Button layoutX="216.0" layoutY="270.0" mnemonicParsing="false" onAction="#registerOnAction" prefHeight="34.0" prefWidth="222.0" style="-fx-background-color: #384B70FF;" text="Registered" textFill="#27cf62">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Button layoutX="496.0" layoutY="270.0" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="34.0" prefWidth="222.0" style="-fx-background-color: #384B70FF;" text="Cancel" textFill="#cf3f27">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Label layoutX="59.0" layoutY="31.0" text="Registraion id" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="640.0" layoutY="31.0" text="Student id" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="59.0" layoutY="99.0" text="Course id" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="362.0" layoutY="99.0" text="Course Name" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="648.0" layoutY="99.0" text="Amount" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="179.0" text="Upfront Payment" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="362.0" layoutY="179.0" text="Total Payment" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="studentid" layoutX="637.0" layoutY="58.0" prefHeight="34.0" prefWidth="222.0" />
+            <Label layoutX="362.0" layoutY="31.0" text="Student Mobile" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="204.0" layoutY="67.0" prefHeight="18.0" prefWidth="46.0" text="search" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="datelbl" layoutX="776.0" layoutY="18.0" prefHeight="25.0" prefWidth="110.0" textFill="WHITE" />
+      <TableView fx:id="registrationtbl" layoutX="51.0" layoutY="508.0" prefHeight="275.0" prefWidth="903.0">
+        <columns>
+          <TableColumn fx:id="colregiid" prefWidth="123.99999618530273" text="Registration id" />
+          <TableColumn fx:id="colstname" prefWidth="200.80003356933594" text="Student Name" />
+            <TableColumn fx:id="colcourse" prefWidth="235.99993896484375" text="Course" />
+            <TableColumn fx:id="coluppayment" prefWidth="170.4000244140625" text="Upfront Payment" />
+            <TableColumn fx:id="coltotalpayment" prefWidth="175.99993896484375" text="Total Payment" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.UserController">
+   <children>
+      <Label layoutX="409.0" layoutY="38.0" text="User Manage" textFill="WHITE">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="70.0" layoutY="127.0" prefHeight="296.0" prefWidth="858.0" style="-fx-border-color: #384B70FF;">
+         <children>
+            <TextField fx:id="useridtext" layoutX="96.0" layoutY="68.0" prefHeight="33.0" prefWidth="266.0" />
+            <TextField fx:id="nametext" layoutX="488.0" layoutY="68.0" prefHeight="33.0" prefWidth="266.0" />
+            <TextField fx:id="passwordtext" layoutX="96.0" layoutY="160.0" prefHeight="33.0" prefWidth="266.0" />
+            <TextField fx:id="emailtext" layoutX="488.0" layoutY="160.0" prefHeight="33.0" prefWidth="266.0" />
+            <Label layoutX="109.0" layoutY="37.0" text="User id" textFill="#eae5e5">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="497.0" layoutY="133.0" text="Email" textFill="#eae5e5">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="109.0" layoutY="133.0" text="Password" textFill="#eae5e5">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="497.0" layoutY="37.0" text="User name" textFill="#eae5e5">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button layoutX="214.0" layoutY="229.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #29CF26FF;" text="Save" textFill="WHITE" />
+            <Button layoutX="528.0" layoutY="229.0" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #B8001FFF;" text="delete" textFill="WHITE" />
+            <Button layoutX="369.0" layoutY="229.0" mnemonicParsing="false" onAction="#updateOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #384B70FF;" text="Update" textFill="WHITE" />
+         </children></AnchorPane>
+      <TableView fx:id="tbluser" layoutX="65.0" layoutY="455.0" prefHeight="336.0" prefWidth="867.0">
+        <columns>
+          <TableColumn fx:id="colid" prefWidth="182.39998626708984" text="User id" />
+          <TableColumn fx:id="colname" prefWidth="283.2000427246094" text="User name" />
+            <TableColumn fx:id="colpassword" prefWidth="172.0" text="Password" />
+            <TableColumn fx:id="colemail" prefWidth="231.199951171875" text="Email" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
