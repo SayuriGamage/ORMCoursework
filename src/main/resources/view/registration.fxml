@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.RegistrationController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161FF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.RegistrationController">
    <children>
       <Label layoutX="382.0" layoutY="42.0" text="Registration Form" textFill="WHITE">
          <font>
@@ -19,21 +13,16 @@
       </Label>
       <AnchorPane layoutX="53.0" layoutY="138.0" prefHeight="341.0" prefWidth="903.0" style="-fx-background-radius: 50; -fx-opacity: 1; -fx-border-color: #ffffff;">
          <children>
-            <ComboBox fx:id="courseid" layoutX="45.0" layoutY="127.0" prefHeight="34.0" prefWidth="222.0" />
+            <ComboBox fx:id="courseid" layoutX="45.0" layoutY="127.0" onAction="#coursedetailONAction" prefHeight="34.0" prefWidth="222.0" />
             <TextField fx:id="coursename" layoutX="354.0" layoutY="127.0" prefHeight="34.0" prefWidth="222.0" />
             <TextField fx:id="amount" layoutX="637.0" layoutY="127.0" prefHeight="34.0" prefWidth="222.0" />
-            <TextField fx:id="upfrontpayment" layoutX="45.0" layoutY="201.0" prefHeight="34.0" prefWidth="222.0" />
-            <TextField fx:id="totalpayment" layoutX="354.0" layoutY="201.0" prefHeight="34.0" prefWidth="222.0" />
-            <TextField fx:id="mobile" layoutX="354.0" layoutY="58.0" prefHeight="34.0" prefWidth="222.0" />
-            <TextField fx:id="regisid" layoutX="45.0" layoutY="58.0" prefHeight="34.0" prefWidth="222.0" />
-            <Button layoutX="216.0" layoutY="270.0" mnemonicParsing="false" onAction="#registerOnAction" prefHeight="34.0" prefWidth="222.0" style="-fx-background-color: #384B70FF;" text="Registered" textFill="#27cf62">
+            <TextField fx:id="upfrontpayment" layoutX="45.0" layoutY="201.0" onAction="#amountpepaidaction" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="tobePayment" layoutX="354.0" layoutY="201.0" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="mobile" layoutX="354.0" layoutY="58.0" onAction="#studentonAction" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="regisid" layoutX="45.0" layoutY="58.0" onAction="#searchonaction" prefHeight="34.0" prefWidth="222.0" />
+            <Button layoutX="590.0" layoutY="275.0" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="42.0" prefWidth="222.0" style="-fx-background-color: #384B70FF;" text="Cancel" textFill="#cf3f27">
                <font>
-                  <Font size="19.0" />
-               </font>
-            </Button>
-            <Button layoutX="496.0" layoutY="270.0" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="34.0" prefWidth="222.0" style="-fx-background-color: #384B70FF;" text="Cancel" textFill="#cf3f27">
-               <font>
-                  <Font size="19.0" />
+                  <Font size="16.0" />
                </font>
             </Button>
             <Label layoutX="59.0" layoutY="31.0" text="Registraion id" textFill="WHITE">
@@ -66,7 +55,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="362.0" layoutY="179.0" text="Total Payment" textFill="WHITE">
+            <Label layoutX="362.0" layoutY="179.0" text="amount to be paid" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -78,17 +67,32 @@
                </font>
             </Label>
             <Label layoutX="204.0" layoutY="67.0" prefHeight="18.0" prefWidth="46.0" text="search" />
+            <Button layoutX="91.0" layoutY="277.0" mnemonicParsing="false" onAction="#registrationOnAction" prefHeight="41.0" prefWidth="222.0" style="-fx-background-color: #384B70FF;" text="Registration" textFill="#27cf62">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button layoutX="341.0" layoutY="277.0" mnemonicParsing="false" onAction="#updateonAction" prefHeight="42.0" prefWidth="222.0" style="-fx-background-color: #384B70FF;" text="update" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <Label fx:id="datelbl" layoutX="776.0" layoutY="18.0" prefHeight="25.0" prefWidth="110.0" textFill="WHITE" />
       <TableView fx:id="registrationtbl" layoutX="51.0" layoutY="508.0" prefHeight="275.0" prefWidth="903.0">
         <columns>
           <TableColumn fx:id="colregiid" prefWidth="123.99999618530273" text="Registration id" />
-          <TableColumn fx:id="colstname" prefWidth="200.80003356933594" text="Student Name" />
-            <TableColumn fx:id="colcourse" prefWidth="235.99993896484375" text="Course" />
+          <TableColumn fx:id="colstid" prefWidth="200.80003356933594" text="Student id" />
+            <TableColumn fx:id="colcourse" prefWidth="235.99993896484375" text="Course id" />
             <TableColumn fx:id="coluppayment" prefWidth="170.4000244140625" text="Upfront Payment" />
-            <TableColumn fx:id="coltotalpayment" prefWidth="175.99993896484375" text="Total Payment" />
+            <TableColumn fx:id="coltotalpayment" prefWidth="169.4000244140625" text="Amount to be Paid" />
         </columns>
       </TableView>
+      <Button fx:id="backbutton" layoutX="7.0" layoutY="10.0" mnemonicParsing="false" onAction="#backonaction" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: #384B70FF;" text="back" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

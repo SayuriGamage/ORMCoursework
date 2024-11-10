@@ -1,13 +1,12 @@
 package lk.ijse.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -23,10 +22,21 @@ public class User {
     private String password;
     private String role;
 
-    public User(String username, String email, String password, String role) {
+    @OneToMany(mappedBy = "user")
+    private List<Student> student;
+
+    public User(long id, String username, String email, String password, String role) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.role = role;
     }
+
+    public User(long id,String username,String email,String password){
+        this.id=id;
+        this.username=username;
+        this.email=email;
+        this.password=password;
+    }
+
 }

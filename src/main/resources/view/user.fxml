@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.UserController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161FF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.UserController">
    <children>
       <Label layoutX="409.0" layoutY="38.0" text="User Manage" textFill="WHITE">
          <font>
@@ -43,7 +39,7 @@
             </Label>
             <Button layoutX="214.0" layoutY="229.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #29CF26FF;" text="Save" textFill="WHITE" />
             <Button layoutX="528.0" layoutY="229.0" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #B8001FFF;" text="delete" textFill="WHITE" />
-            <Button layoutX="369.0" layoutY="229.0" mnemonicParsing="false" onAction="#updateOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #384B70FF;" text="Update" textFill="WHITE" />
+            <Button layoutX="377.0" layoutY="229.0" mnemonicParsing="false" onAction="#updateOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #384B70FF;" text="Button" textFill="WHITE" />
          </children></AnchorPane>
       <TableView fx:id="tbluser" layoutX="65.0" layoutY="455.0" prefHeight="336.0" prefWidth="867.0">
         <columns>
@@ -53,5 +49,6 @@
             <TableColumn fx:id="colemail" prefWidth="231.199951171875" text="Email" />
         </columns>
       </TableView>
+      <Button fx:id="backuser" layoutX="28.0" layoutY="14.0" mnemonicParsing="false" onAction="#backAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #384B70FF;" text="back" textFill="WHITE" />
    </children>
 </AnchorPane>

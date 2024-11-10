@@ -22,6 +22,8 @@ public class LoginContoller {
     public TextField textusername;
     public TextField textpassword;
     public Hyperlink registerlink;
+    public AnchorPane rootNode2;
+
 
 
     Userdao userdao= (Userdao) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOTypes.user);
@@ -42,32 +44,48 @@ public class LoginContoller {
          }
     }
 
-    public void loginOnAction(ActionEvent actionEvent) {
-       String username=textusername.getText();
-       String password=textpassword.getText();
-
-       if(username.isEmpty() || password.isEmpty()){
-           new Alert(Alert.AlertType.ERROR,"please fill all the fields").show();
-
-       } else {
-           UserDTO userDTO =userbo.getdata(username);
-           if (userDTO == null){
-               new Alert(Alert.AlertType.ERROR,"Invalid username").show();
-           } else {
-               if (BCrypt.checkpw(password,userDTO.getPassword())){
-            if(userDTO.getRole().equals("admin")){
-                System.out.println("he is admin");
-                liveUserRole="admin";
-            } else {
-                liveUserRole="user";
-                System.out.println("he is user");
-            }
-               } else {
-                   new Alert(Alert.AlertType.ERROR,"Invalid password").show();
-               }
-           }
-       }
-
-
+    void getdashboard() throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+        Scene scene = new Scene(rootNode);
+        Stage stage = (Stage) rootNode2.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Registration Page");
     }
+
+    public void loginOnAction(ActionEvent actionEvent) throws IOException {
+        String username = textusername.getText();
+        String password = textpassword.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please fill all the fields").show();
+        } else {
+            UserDTO userDTO = userbo.getdata(username);
+            if (userDTO == null) {
+                new Alert(Alert.AlertType.ERROR, "Invalid username").show();
+            } else {
+                if (BCrypt.checkpw(password, userDTO.getPassword())) {
+                    String role = userDTO.getRole();
+                    if (role != null && role.equals("admin")) {
+                        System.out.println("User is admin");
+                        liveUserRole = "admin";
+                    } else if (role != null && role.equals("user")) {
+                        liveUserRole = "user";
+                        System.out.println("User is a regular user");
+                    } else {
+                        new Alert(Alert.AlertType.ERROR, "Invalid role").show();
+                        getdashboard();
+                        return;
+                    }
+                    getdashboard();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Invalid password").show();
+                }
+            }
+        }
+    }
+
+
+
 }
+
