@@ -28,7 +28,7 @@ public class LoginContoller {
 
     Userdao userdao= (Userdao) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOTypes.user);
     Userbo userbo= (Userbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.user);
-      String liveUserRole="";
+      static String liveUserRole="";
 
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
          if(userdao.ifHaveAdmins()){
@@ -67,11 +67,11 @@ public class LoginContoller {
                 if (BCrypt.checkpw(password, userDTO.getPassword())) {
                     String role = userDTO.getRole();
                     if (role != null && role.equals("admin")) {
-                        System.out.println("User is admin");
+                        new Alert(Alert.AlertType.CONFIRMATION,"welcome admin "+username).show();
                         liveUserRole = "admin";
-                    } else if (role != null && role.equals("user")) {
-                        liveUserRole = "user";
-                        System.out.println("User is a regular user");
+                    } else if (role != null && role.equals("coordinator")) {
+                        liveUserRole = "coordinator";
+                        new Alert(Alert.AlertType.CONFIRMATION,"welcome coordinator "+username).show();
                     } else {
                         new Alert(Alert.AlertType.ERROR, "Invalid role").show();
                         getdashboard();

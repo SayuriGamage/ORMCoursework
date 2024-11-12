@@ -22,7 +22,7 @@ public class User {
     private String password;
     private String role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Student> student;
 
     public User(long id, String username, String email, String password, String role) {

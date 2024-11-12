@@ -19,14 +19,16 @@ public class RegistrationDTO {
     private Course courses;
     private Student student;
 
-    public RegistrationDTO(String id, String stname, String paid, Course courseId, Student studentId, String date) {
-        this.regi_id=id;
-        this.upfront_payment=stname;
-        this.tobePaid=paid;
-        this.date=date;
-        this.student=studentId;
-        this.courses=courseId;
 
 
+    public RegistrationDTO(String id, String stname, String paid, Course course, Student student, String date) {
+        this.regi_id = id;
+        this.upfront_payment = stname;
+        this.tobePaid = paid;
+        this.courses = course;
+        this.student = student;
+        this.date = date;
     }
+
+
 }

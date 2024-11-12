@@ -1,11 +1,13 @@
 package lk.ijse.controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.Coursebo;
@@ -42,13 +44,31 @@ public class RegistrationController {
     public Button backbutton;
     public TextField tobePayment;
     public TableColumn colstid;
+
+
 Coursebo coursebo= (Coursebo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.course);
 Studentbo studentbo= (Studentbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.student);
 Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.regi);
 
     public void initialize(){
+        setcellvaluefactory();
+        getallRegistrations();
         loadAllCourses();
         setDate();
+    }
+
+    private void getallRegistrations() {
+        ObservableList<RegistrationDTO> registrationDTOS=registrationbo.getAllRegistrations();
+        registrationtbl.setItems(registrationDTOS);
+    }
+
+    private void setcellvaluefactory() {
+      colregiid.setCellValueFactory(new PropertyValueFactory<>("regi_id"));
+      coluppayment.setCellValueFactory(new PropertyValueFactory<>("upfront_payment"));
+      coltotalpayment.setCellValueFactory(new PropertyValueFactory<>("tobePaid"));
+        colcourse.setCellValueFactory(new PropertyValueFactory<>("courses.pro_id"));
+        colstid.setCellValueFactory(new PropertyValueFactory<>("student.id"));
+        coluppayment.setCellValueFactory(new PropertyValueFactory<>("upfront_payment"));
     }
 
     private void setDate() {
@@ -68,6 +88,21 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {
+        String id=regisid.getText();
+        boolean idDeleted=registrationbo.deleteRegistration(id);
+        if(idDeleted){
+            cleartextFields();
+            getallRegistrations();
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setContentText("Registration is deleted");
+            alert.showAndWait();
+        }else{
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Registration is not deleted");
+            alert.showAndWait();
+        }
     }
 
     public void backonaction(ActionEvent actionEvent) throws IOException {
@@ -94,6 +129,8 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
 
       boolean isAdded=registrationbo.addRegistration(registrationDTO);
       if(isAdded){
+          cleartextFields();
+          getallRegistrations();
           Alert alert=new Alert(Alert.AlertType.INFORMATION);
           alert.setTitle("Information");
           alert.setContentText("Registration is done");
@@ -105,6 +142,17 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
           alert.showAndWait();
       }
 
+    }
+
+    private void cleartextFields() {
+        regisid.clear();
+        upfrontpayment.clear();
+        tobePayment.clear();
+        studentid.clear();
+        courseid.getSelectionModel().clearSelection();
+        coursename.clear();
+        amount.clear();
+        mobile.clear();
     }
 
     public void updateonAction(ActionEvent actionEvent) {
@@ -121,6 +169,8 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
 
         boolean isUpdated=registrationbo.updateRegistration(registrationDTO);
         if(isUpdated){
+            cleartextFields();
+            getallRegistrations();
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setContentText("update Registration is done");
@@ -158,6 +208,14 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         String id=regisid.getText();
 
         RegistrationDTO registrationDTO=registrationbo.getregistrations(id);
+        regisid.setText(registrationDTO.getRegi_id());
+        upfrontpayment.setText(registrationDTO.getUpfront_payment());
+        tobePayment.setText(registrationDTO.getTobePaid());
+        mobile.setText(registrationDTO.getStudent().getTell());
+        courseid.setValue(registrationDTO.getCourses().getPro_id());
+        studentid.setText(registrationDTO.getStudent().getId());
+        amount.setText(registrationDTO.getCourses().getFee());
+
 
     }
 }

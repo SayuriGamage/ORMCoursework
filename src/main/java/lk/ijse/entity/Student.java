@@ -21,11 +21,11 @@ public class Student {
     private String address;
     private String tell;
 
-    @ManyToOne
+    @ManyToOne (cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Registration> registrations;
 
 

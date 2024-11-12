@@ -7,6 +7,8 @@ import lk.ijse.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class RegistrationdaoImpl implements Registrationdao {
     @Override
     public boolean addRegistration(Registration registration) {
@@ -59,5 +61,24 @@ public class RegistrationdaoImpl implements Registrationdao {
             }
         }
         return registration;
+    }
+
+    @Override
+    public boolean deleteRegistration(String id) {
+        Session session=FactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
+        Registration  registration=session.get(Registration.class,id);
+        session.delete(registration);
+        transaction.commit();
+        session.close();
+        return true;
+    }
+
+    @Override
+    public List<Registration> getAllRegistrations() {
+        Session session=FactoryConfiguration.getInstance().getSession();
+        String hql="from Registration";
+        return session.createQuery(hql,Registration.class).list();
+
     }
 }

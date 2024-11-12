@@ -3,6 +3,7 @@ package lk.ijse.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -10,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class DashboardController {
-    public AnchorPane rootNode2;
+
     public Button userbutton;
     public Button studentbutton;
     public Button coursebutton;
@@ -28,13 +29,17 @@ public class DashboardController {
     }
 
     public void courseOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/course.fxml"));
-        Scene scene = new Scene(rootNode);
+       if (LoginContoller.liveUserRole.equals("admin")){
+           AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/course.fxml"));
+           Scene scene = new Scene(rootNode);
 
-        Stage stage = (Stage) coursebutton.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Login Page");
+           Stage stage = (Stage) coursebutton.getScene().getWindow();
+           stage.setScene(scene);
+           stage.centerOnScreen();
+           stage.setTitle("Login Page");
+       }else {
+           new Alert(Alert.AlertType.ERROR,"sorry you cant access").show();
+       }
     }
 
     public void customerOnAction(ActionEvent actionEvent) throws IOException {
@@ -48,13 +53,17 @@ public class DashboardController {
     }
 
     public void usermanageOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/user.fxml"));
-        Scene scene = new Scene(rootNode);
+      if(LoginContoller.liveUserRole.equals("admin")){
+          AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/user.fxml"));
+          Scene scene = new Scene(rootNode);
 
-        Stage stage = (Stage) userbutton.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Login Page");
+          Stage stage = (Stage) userbutton.getScene().getWindow();
+          stage.setScene(scene);
+          stage.centerOnScreen();
+          stage.setTitle("Login Page");
+      }else {
+      new Alert(Alert.AlertType.ERROR,"sorry you cant access").show();
+      }
 
     }
 }

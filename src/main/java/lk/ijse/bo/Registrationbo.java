@@ -1,5 +1,6 @@
 package lk.ijse.bo;
 
+import javafx.collections.ObservableList;
 import lk.ijse.dto.RegistrationDTO;
 
 public interface Registrationbo extends SuperBO{
@@ -8,5 +9,9 @@ public interface Registrationbo extends SuperBO{
     boolean updateRegistration(RegistrationDTO registrationDTO);
 
     RegistrationDTO getregistrations(String id);
+
+    boolean deleteRegistration(String id);
+
+    ObservableList<RegistrationDTO> getAllRegistrations();
 
 }
