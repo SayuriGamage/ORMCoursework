@@ -18,6 +18,8 @@ public class RegistrationDTO {
     private String date;
     private Course courses;
     private Student student;
+   /* private String courseid;
+    private String studentid;*/
 
 
 
@@ -29,6 +31,15 @@ public class RegistrationDTO {
         this.student = student;
         this.date = date;
     }
+
+    public String getCourseId() {
+        return courses != null ? courses.getPro_id() : "";
+    }
+
+    public String getStudentId() {
+        return student != null ? student.getId() : "";
+    }
+
 
 
 }

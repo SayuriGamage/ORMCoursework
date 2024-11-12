@@ -66,8 +66,8 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
       colregiid.setCellValueFactory(new PropertyValueFactory<>("regi_id"));
       coluppayment.setCellValueFactory(new PropertyValueFactory<>("upfront_payment"));
       coltotalpayment.setCellValueFactory(new PropertyValueFactory<>("tobePaid"));
-        colcourse.setCellValueFactory(new PropertyValueFactory<>("courses.pro_id"));
-        colstid.setCellValueFactory(new PropertyValueFactory<>("student.id"));
+        colcourse.setCellValueFactory(new PropertyValueFactory<>("courseId"));
+        colstid.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         coluppayment.setCellValueFactory(new PropertyValueFactory<>("upfront_payment"));
     }
 
