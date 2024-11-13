@@ -53,7 +53,6 @@ public class UserboImpl implements Userbo {
 
     @Override
     public boolean deleteUser(String ids) {
-
         return userdao.deleteUser(ids);
     }
 

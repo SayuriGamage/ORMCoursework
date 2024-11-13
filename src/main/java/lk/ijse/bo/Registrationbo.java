@@ -14,4 +14,9 @@ public interface Registrationbo extends SuperBO{
 
     ObservableList<RegistrationDTO> getAllRegistrations();
 
+
+    int registrationCount();
+
+    String getCurrentRegistrationId();
+
 }

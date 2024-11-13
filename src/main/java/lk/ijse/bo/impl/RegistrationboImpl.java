@@ -13,6 +13,7 @@ import java.util.List;
 
 public class RegistrationboImpl implements Registrationbo {
     Registrationdao registrationdao= (Registrationdao) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOTypes.regi);
+
     @Override
     public boolean addRegistration(RegistrationDTO registrationDTO) {
         return registrationdao.addRegistration(new Registration(registrationDTO.getRegi_id(),registrationDTO.getUpfront_payment(),registrationDTO.getTobePaid(),registrationDTO.getDate(),registrationDTO.getCourses(),registrationDTO.getStudent()));
@@ -45,4 +46,18 @@ public class RegistrationboImpl implements Registrationbo {
         }
       return FXCollections.observableArrayList(registrationDTOS);
     }
+
+    @Override
+    public int registrationCount() {
+
+        return registrationdao.registrationCount();
+    }
+
+    @Override
+    public String getCurrentRegistrationId() {
+
+        return registrationdao.getCurrentRegistrationId();
+    }
+
+
 }

@@ -18,4 +18,8 @@ public interface Registrationdao extends SuperDAo{
 
     List<Registration> getAllRegistrations();
 
+    int registrationCount();
+
+    String getCurrentRegistrationId();
+
 }

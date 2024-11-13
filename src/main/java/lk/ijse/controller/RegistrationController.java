@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.Coursebo;
@@ -55,6 +56,26 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         getallRegistrations();
         loadAllCourses();
         setDate();
+        String currentRegistrationId=null;
+        currentRegistrationId=registrationbo.getCurrentRegistrationId();
+        String nextempId = generateNextregiId(currentRegistrationId);
+        regisid.setText(nextempId);
+    }
+
+    private String generateNextregiId(String currentRegistrationId) {
+        if (currentRegistrationId != null && currentRegistrationId.matches("^REG\\d+$")) {
+
+            String numericPart =currentRegistrationId.substring(3);
+            try {
+
+                int orderId = Integer.parseInt(numericPart) + 1;
+
+                return "REG" + String.format("%03d", orderId);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return "REG001";
     }
 
     private void getallRegistrations() {
@@ -216,6 +237,11 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         studentid.setText(registrationDTO.getStudent().getId());
         amount.setText(registrationDTO.getCourses().getFee());
 
+
+    }
+
+
+    public void upfrontPaymentAction(KeyEvent keyEvent) {
 
     }
 }

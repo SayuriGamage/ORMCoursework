@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161FF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.RegistrationController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.RegistrationController">
    <children>
       <Label layoutX="382.0" layoutY="42.0" text="Registration Form" textFill="WHITE">
          <font>
@@ -16,7 +21,7 @@
             <ComboBox fx:id="courseid" layoutX="45.0" layoutY="127.0" onAction="#coursedetailONAction" prefHeight="34.0" prefWidth="222.0" />
             <TextField fx:id="coursename" layoutX="354.0" layoutY="127.0" prefHeight="34.0" prefWidth="222.0" />
             <TextField fx:id="amount" layoutX="637.0" layoutY="127.0" prefHeight="34.0" prefWidth="222.0" />
-            <TextField fx:id="upfrontpayment" layoutX="45.0" layoutY="201.0" onAction="#amountpepaidaction" prefHeight="34.0" prefWidth="222.0" />
+            <TextField fx:id="upfrontpayment" layoutX="45.0" layoutY="201.0" onAction="#amountpepaidaction" onKeyReleased="#upfrontPaymentAction" prefHeight="34.0" prefWidth="222.0" />
             <TextField fx:id="tobePayment" layoutX="354.0" layoutY="201.0" prefHeight="34.0" prefWidth="222.0" />
             <TextField fx:id="mobile" layoutX="354.0" layoutY="58.0" onAction="#studentonAction" prefHeight="34.0" prefWidth="222.0" />
             <TextField fx:id="regisid" layoutX="45.0" layoutY="58.0" onAction="#searchonaction" prefHeight="34.0" prefWidth="222.0" />
@@ -80,7 +85,7 @@
          </children>
       </AnchorPane>
       <Label fx:id="datelbl" layoutX="776.0" layoutY="18.0" prefHeight="25.0" prefWidth="110.0" textFill="WHITE" />
-      <TableView fx:id="registrationtbl" layoutX="51.0" layoutY="508.0" prefHeight="275.0" prefWidth="903.0">
+      <TableView fx:id="registrationtbl" layoutX="51.0" layoutY="508.0" prefHeight="275.0" prefWidth="903.0" style="-fx-background-color: #000000;">
         <columns>
           <TableColumn fx:id="colregiid" prefWidth="123.99999618530273" text="Registration id" />
           <TableColumn fx:id="colstid" prefWidth="200.80003356933594" text="Student id" />

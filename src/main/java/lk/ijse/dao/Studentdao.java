@@ -19,4 +19,9 @@ public interface Studentdao extends SuperDAo {
 
     Student getStudentbyId(String studentId);
 
+
+    int StudentCount();
+
+    String getCurrentStudentId();
+
 }

@@ -1,5 +1,7 @@
 package lk.ijse.dao.impl;
 
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.Registrationdao;
 import lk.ijse.entity.Registration;
@@ -81,4 +83,32 @@ public class RegistrationdaoImpl implements Registrationdao {
         return session.createQuery(hql,Registration.class).list();
 
     }
+
+    @Override
+    public int registrationCount() {
+        Session session=FactoryConfiguration.getInstance().getSession();
+        String hql="select count(regi_id) from Registration";
+        Query query=session.createQuery(hql);
+        return Integer.parseInt(query.getSingleResult().toString());
+    }
+
+    @Override
+    public String getCurrentRegistrationId() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "SELECT regi_id FROM Registration ORDER BY regi_id DESC";
+        String regiId = null;
+
+        try {
+            regiId = (String) session.createQuery(hql)
+                    .setMaxResults(1)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            regiId = null;
+        } finally {
+            session.close();
+        }
+        return regiId;
+    }
+
+
 }

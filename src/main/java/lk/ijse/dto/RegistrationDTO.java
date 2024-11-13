@@ -18,8 +18,7 @@ public class RegistrationDTO {
     private String date;
     private Course courses;
     private Student student;
-   /* private String courseid;
-    private String studentid;*/
+
 
 
 

@@ -68,5 +68,10 @@ public class CourseboImpl implements Coursebo {
         return coursedao.getcourseById(courseId);
     }
 
+    @Override
+    public String getCurrentCourseId() {
+        return coursedao.getCurrentCourseId();
+    }
+
 
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.Coursebo;
@@ -34,6 +35,26 @@ public class CourseController {
     public void initialize(){
         setCellValueFactory();
         getallStudent();
+        String currentCourseId=null;
+        currentCourseId=coursebo.getCurrentCourseId();
+        String nextempId = generateNextregiId(currentCourseId);
+        proid.setText(nextempId);
+    }
+
+    private String generateNextregiId(String currentCourseId) {
+        if (currentCourseId != null && currentCourseId.matches("^COU\\d+$")) {
+
+            String numericPart = currentCourseId.substring(3);
+            try {
+
+                int orderId = Integer.parseInt(numericPart) + 1;
+
+                return "COU" + String.format("%03d", orderId);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return "COU001";
     }
 
     private void getallStudent() {
@@ -126,5 +147,21 @@ public class CourseController {
         proname.setText(courseDTO.getPro_name());
         profee.setText(courseDTO.getFee());
         produration.setText(courseDTO.getDuration());
+    }
+
+    public void programmeId(KeyEvent keyEvent) {
+
+    }
+
+    public void nameonAction(KeyEvent keyEvent) {
+
+    }
+
+    public void feeonAction(KeyEvent keyEvent) {
+
+    }
+
+    public void durationonAction(KeyEvent keyEvent) {
+
     }
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.Studentbo;
@@ -36,9 +37,29 @@ public void initialize(){
 
     setcellvaluefactory();
     getallStudent();
+    String currentStudentId=null;
+    currentStudentId=studentbo.getCurrentStudentId();
+    String nextempId = generateNextempId(currentStudentId);
+    stusid.setText(nextempId);
 }
 
-private void clearfields(){
+    private String generateNextempId(String currentStudentId) {
+        if (currentStudentId != null && currentStudentId.matches("^STU\\d+$")) {
+
+            String numericPart = currentStudentId.substring(3);
+            try {
+
+                int orderId = Integer.parseInt(numericPart) + 1;
+
+                return "STU" + String.format("%03d", orderId);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return "STU001";
+    }
+
+    private void clearfields(){
     stname.clear();
     staddress.clear();
     sttell.clear();
@@ -55,7 +76,7 @@ private void clearfields(){
         sttblname.setCellValueFactory(new PropertyValueFactory<>("id"));
         sttbluserId.setCellValueFactory(new PropertyValueFactory<>("name"));
         sttblmobile.setCellValueFactory(new PropertyValueFactory<>("tell"));
-        sttbladdress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        sttbladdress.setCellValueFactory(new PropertyValueFactory<>("address")); 
 
     }
 
@@ -130,5 +151,16 @@ private void clearfields(){
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("Login Page");
+    }
+
+    public void AddressonAction(KeyEvent keyEvent) {
+
+    }
+
+    public void nameonAction(KeyEvent keyEvent) {
+    }
+
+    public void tellOnAction(KeyEvent keyEvent) {
+
     }
 }

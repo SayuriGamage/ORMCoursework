@@ -7,7 +7,6 @@ import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.Studentdao;
 import lk.ijse.dto.StudentDTO;
 import lk.ijse.entity.Student;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,6 @@ public class StudentboImpl implements Studentbo {
             studentDTOS.add(new StudentDTO(student.getId(), student.getName(), student.getAddress(), student.getTell()));
         }
         return FXCollections.observableArrayList(studentDTOS);
-
     }
 
     @Override
@@ -62,4 +60,16 @@ public class StudentboImpl implements Studentbo {
     public Student getStudentById(String studentId) {
         return studentdao.getStudentbyId(studentId);
     }
+
+    @Override
+    public int StudentCount() {
+        return studentdao.StudentCount();
+    }
+
+    @Override
+    public String getCurrentStudentId() {
+        return studentdao.getCurrentStudentId();
+    }
+
+
 }

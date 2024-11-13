@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.Userbo;
@@ -61,6 +62,7 @@ public class UserController {
        UserDTO userDTO = new UserDTO( name, email,encript, role);
        boolean result = userbo.saveUser(userDTO);
        if (result) {
+           getallusers();
            new Alert(Alert.AlertType.CONFIRMATION, "Registration user successful").show();
        } else {
            new Alert(Alert.AlertType.ERROR, "Registration user failed").show();
@@ -96,16 +98,17 @@ public class UserController {
         String password = passwordtext.getText();
         String email = emailtext.getText();
         String role = roletext.getText();
-      //  String encript= BCrypt.hashpw(password,BCrypt.gensalt());
-        UserDTO userDTO = new UserDTO( name, email,password, role);
+       String encript= BCrypt.hashpw(password,BCrypt.gensalt());
+        UserDTO userDTO = new UserDTO(name, email,encript, role);
         boolean result = userbo.updateUser(userDTO);
+        System.out.println("update eka methanata wenaka  wenawa");
         if (result) {
             new Alert(Alert.AlertType.CONFIRMATION, "update user successful").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "update user failed").show();
         }
-
     }
+
 
     public void searchOnAction(ActionEvent actionEvent) {
        String ids=useridtext.getText();
@@ -114,5 +117,21 @@ public class UserController {
        emailtext.setText(userDTO.getEmail());
        passwordtext.setText(userDTO.getPassword());
        roletext.setText(userDTO.getRole());
+    }
+
+    public void nameonAction(KeyEvent keyEvent) {
+
+    }
+
+    public void passwordonAction(KeyEvent keyEvent) {
+
+    }
+
+    public void emailOnAction(KeyEvent keyEvent) {
+
+    }
+
+    public void roleonAction(KeyEvent keyEvent) {
+
     }
 }

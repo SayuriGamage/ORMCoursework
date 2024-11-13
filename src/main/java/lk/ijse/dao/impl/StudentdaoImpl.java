@@ -1,8 +1,8 @@
 package lk.ijse.dao.impl;
 
+import jakarta.persistence.NoResultException;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.Studentdao;
-import lk.ijse.entity.Course;
 import lk.ijse.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -112,6 +112,35 @@ public class StudentdaoImpl implements Studentdao {
             }
         }
     }
+
+    @Override
+    public int StudentCount() {
+        Session session=FactoryConfiguration.getInstance().getSession();
+        String hql="select count(id) from Student";
+        jakarta.persistence.Query query=session.createQuery(hql);
+        return Integer.parseInt(query.getSingleResult().toString());
+    }
+
+    @Override
+    public String getCurrentStudentId() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "SELECT id FROM Student ORDER BY id DESC";
+        String studentId = null;
+
+        try {
+            studentId = (String) session.createQuery(hql)
+                    .setMaxResults(1)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            studentId = null;
+        } finally {
+            session.close();
+        }
+        return studentId;
+    }
+
+
+
 }
 
 

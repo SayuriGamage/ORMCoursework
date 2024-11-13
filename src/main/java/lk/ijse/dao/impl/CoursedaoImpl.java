@@ -1,5 +1,6 @@
 package lk.ijse.dao.impl;
 
+import jakarta.persistence.NoResultException;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.Coursedao;
 import lk.ijse.dto.CourseDTO;
@@ -122,6 +123,24 @@ public class CoursedaoImpl implements Coursedao {
                 session.close();
             }
         }
+    }
+
+    @Override
+    public String getCurrentCourseId() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "SELECT pro_id FROM Course ORDER BY pro_id DESC";
+        String courseId = null;
+
+        try {
+            courseId = (String) session.createQuery(hql)
+                    .setMaxResults(1)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            courseId = null;
+        } finally {
+            session.close();
+        }
+        return courseId ;
     }
 
 }

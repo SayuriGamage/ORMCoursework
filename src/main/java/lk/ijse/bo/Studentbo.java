@@ -19,4 +19,9 @@ public interface Studentbo extends SuperBO {
 
     Student getStudentById(String studentId);
 
+
+    int StudentCount();
+
+    String getCurrentStudentId();
+
 }

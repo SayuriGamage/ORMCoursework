@@ -24,4 +24,5 @@ public interface Coursebo extends SuperBO{
 
     Course getCourseById(String courseId);
 
+    String getCurrentCourseId();
 }

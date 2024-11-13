@@ -22,4 +22,6 @@ public interface Coursedao extends SuperDAo{
 
     Course getcourseById(String courseId);
 
+    String getCurrentCourseId();
+
 }

@@ -3,7 +3,6 @@ package lk.ijse.dao.impl;
 import jakarta.persistence.NoResultException;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.Userdao;
-import lk.ijse.entity.Student;
 import lk.ijse.entity.User;
 import org.hibernate.Session;
 
@@ -43,9 +42,9 @@ public class UserdaoImpl implements Userdao {
                 session.close();
             }
         }
-
         return user;
     }
+
 
     @Override
     public boolean registerAdmin(User user) {
@@ -98,10 +97,10 @@ public class UserdaoImpl implements Userdao {
                 session.close();
             }
         }
-
         return user;
-
     }
+
+
 
     @Override
     public boolean updateUser(User user) {
@@ -111,12 +110,14 @@ public class UserdaoImpl implements Userdao {
             session.update(user);
             session.getTransaction().commit();
             return true;
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
             return false;
         }
     }
+
+
 
     @Override
     public boolean deleteUser(String ids) {
@@ -133,6 +134,8 @@ public class UserdaoImpl implements Userdao {
             return false;
         }
     }
+
+
 
     @Override
     public List<User> getAllUsers() {
