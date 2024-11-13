@@ -90,6 +90,10 @@ public class CourseController {
         if(result){
             getallStudent();
             clearfields();
+            String currentCourseId=null;
+            currentCourseId=coursebo.getCurrentCourseId();
+            String nextempId = generateNextregiId(currentCourseId);
+            proid.setText(nextempId);
             new Alert(Alert.AlertType.CONFIRMATION,"save course").show();
 
         } else{
@@ -110,6 +114,10 @@ public class CourseController {
         if(result) {
             getallStudent();
             clearfields();
+            String currentCourseId=null;
+            currentCourseId=coursebo.getCurrentCourseId();
+            String nextempId = generateNextregiId(currentCourseId);
+            proid.setText(nextempId);
             new Alert(Alert.AlertType.CONFIRMATION, "update course").show();
         } else {
             new Alert(Alert.AlertType.ERROR, " not update course").show();
@@ -123,6 +131,10 @@ public class CourseController {
         if (result) {
             getallStudent();
             clearfields();
+            String currentCourseId=null;
+            currentCourseId=coursebo.getCurrentCourseId();
+            String nextempId = generateNextregiId(currentCourseId);
+            proid.setText(nextempId);
             new Alert(Alert.AlertType.CONFIRMATION, "delete course").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "delete course").show();
@@ -148,6 +160,8 @@ public class CourseController {
         profee.setText(courseDTO.getFee());
         produration.setText(courseDTO.getDuration());
     }
+
+
 
     public void programmeId(KeyEvent keyEvent) {
 

@@ -92,6 +92,10 @@ public void initialize(){
         if(result){
          getallStudent();
          clearfields();
+            String currentStudentId=null;
+            currentStudentId=studentbo.getCurrentStudentId();
+            String nextempId = generateNextempId(currentStudentId);
+            stusid.setText(nextempId);
           new   Alert(Alert.AlertType.CONFIRMATION,"save Student").show();
         }
         else {
@@ -110,6 +114,10 @@ public void initialize(){
     if(result) {
         getallStudent();
         clearfields();
+        String currentStudentId=null;
+        currentStudentId=studentbo.getCurrentStudentId();
+        String nextempId = generateNextempId(currentStudentId);
+        stusid.setText(nextempId);
         new Alert(Alert.AlertType.CONFIRMATION, "update Studet").show();
     } else {
         new Alert(Alert.AlertType.ERROR, "update Studet").show();
@@ -137,6 +145,10 @@ public void initialize(){
         if (result) {
             getallStudent();
             clearfields();
+            String currentStudentId=null;
+            currentStudentId=studentbo.getCurrentStudentId();
+            String nextempId = generateNextempId(currentStudentId);
+            stusid.setText(nextempId);
             new Alert(Alert.AlertType.CONFIRMATION, "delete Studet").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "delete Studet").show();

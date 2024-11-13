@@ -100,25 +100,6 @@ public class UserdaoImpl implements Userdao {
         return user;
     }
 
-
-
-    @Override
-    public boolean updateUser(User user) {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        try {
-            session.beginTransaction();
-            session.update(user);
-            session.getTransaction().commit();
-            return true;
-        }catch (Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-            return false;
-        }
-    }
-
-
-
     @Override
     public boolean deleteUser(String ids) {
 

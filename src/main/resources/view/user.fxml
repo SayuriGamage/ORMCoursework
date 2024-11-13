@@ -41,9 +41,8 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Button layoutX="214.0" layoutY="229.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #29CF26FF;" text="Save" textFill="WHITE" />
-            <Button layoutX="528.0" layoutY="229.0" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #B8001FFF;" text="delete" textFill="WHITE" />
-            <Button layoutX="377.0" layoutY="229.0" mnemonicParsing="false" onAction="#updateOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #384B70FF;" text="update" textFill="WHITE" />
+            <Button layoutX="285.0" layoutY="229.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #29CF26FF;" text="Save" textFill="WHITE" />
+            <Button layoutX="470.0" layoutY="229.0" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #B8001FFF;" text="delete" textFill="WHITE" />
             <Label layoutX="621.0" layoutY="37.0" text="Role" textFill="#eae5e5">
                <font>
                   <Font size="17.0" />

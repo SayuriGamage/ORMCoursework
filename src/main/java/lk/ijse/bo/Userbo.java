@@ -12,7 +12,6 @@ public interface Userbo extends SuperBO{
 
     UserDTO getUser(String ids);
 
-    boolean updateUser(UserDTO userDTO);
 
     boolean deleteUser(String ids);
 

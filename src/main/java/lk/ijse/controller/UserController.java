@@ -63,10 +63,18 @@ public class UserController {
        boolean result = userbo.saveUser(userDTO);
        if (result) {
            getallusers();
+           clearfields();
            new Alert(Alert.AlertType.CONFIRMATION, "Registration user successful").show();
        } else {
            new Alert(Alert.AlertType.ERROR, "Registration user failed").show();
        }
+    }
+
+    private void clearfields() {
+        nametext.clear();
+        passwordtext.clear();
+        emailtext.clear();
+        roletext.clear();
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {
@@ -74,6 +82,8 @@ public class UserController {
 
      boolean result=userbo.deleteUser(ids);
      if (result) {
+         clearfields();
+         getallusers();
          new Alert(Alert.AlertType.CONFIRMATION, "delete user successful").show();
      } else {
          new Alert(Alert.AlertType.ERROR, "delete user failed").show();
@@ -92,22 +102,7 @@ public class UserController {
         stage.setTitle("Login Page");
     }
 
-    public void updateOnAction(ActionEvent actionEvent) {
 
-        String name = nametext.getText();
-        String password = passwordtext.getText();
-        String email = emailtext.getText();
-        String role = roletext.getText();
-       String encript= BCrypt.hashpw(password,BCrypt.gensalt());
-        UserDTO userDTO = new UserDTO(name, email,encript, role);
-        boolean result = userbo.updateUser(userDTO);
-        System.out.println("update eka methanata wenaka  wenawa");
-        if (result) {
-            new Alert(Alert.AlertType.CONFIRMATION, "update user successful").show();
-        } else {
-            new Alert(Alert.AlertType.ERROR, "update user failed").show();
-        }
-    }
 
 
     public void searchOnAction(ActionEvent actionEvent) {

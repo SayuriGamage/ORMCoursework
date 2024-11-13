@@ -114,6 +114,10 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         if(idDeleted){
             cleartextFields();
             getallRegistrations();
+            String currentRegistrationId=null;
+            currentRegistrationId=registrationbo.getCurrentRegistrationId();
+            String nextempId = generateNextregiId(currentRegistrationId);
+            regisid.setText(nextempId);
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setContentText("Registration is deleted");
@@ -152,6 +156,10 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
       if(isAdded){
           cleartextFields();
           getallRegistrations();
+          String currentRegistrationId=null;
+          currentRegistrationId=registrationbo.getCurrentRegistrationId();
+          String nextempId = generateNextregiId(currentRegistrationId);
+          regisid.setText(nextempId);
           Alert alert=new Alert(Alert.AlertType.INFORMATION);
           alert.setTitle("Information");
           alert.setContentText("Registration is done");
@@ -192,6 +200,10 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         if(isUpdated){
             cleartextFields();
             getallRegistrations();
+            String currentRegistrationId=null;
+            currentRegistrationId=registrationbo.getCurrentRegistrationId();
+            String nextempId = generateNextregiId(currentRegistrationId);
+            regisid.setText(nextempId);
             Alert alert=new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setContentText("update Registration is done");

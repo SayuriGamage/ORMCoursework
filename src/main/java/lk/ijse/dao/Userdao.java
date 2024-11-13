@@ -16,7 +16,6 @@ public interface Userdao extends Cruddao<User> {
 
     User getdatas(String ids);
 
-    boolean updateUser(User user);
 
     boolean deleteUser(String ids);
 
