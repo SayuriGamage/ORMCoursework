@@ -17,9 +17,11 @@ import lk.ijse.bo.Studentbo;
 import lk.ijse.bo.impl.BOFactory;
 import lk.ijse.dao.Registrationdao;
 import lk.ijse.dto.CourseDTO;
+import lk.ijse.dto.PaymentDetailsDTO;
 import lk.ijse.dto.RegistrationDTO;
 import lk.ijse.dto.StudentDTO;
 import lk.ijse.entity.Course;
+import lk.ijse.entity.Registration;
 import lk.ijse.entity.Student;
 
 import java.io.IOException;
@@ -50,6 +52,7 @@ public class RegistrationController {
 Coursebo coursebo= (Coursebo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.course);
 Studentbo studentbo= (Studentbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.student);
 Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.regi);
+
 
     public void initialize(){
         setcellvaluefactory();
@@ -142,7 +145,9 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
 
     public void registrationOnAction(ActionEvent actionEvent) {
       String id=regisid.getText();
+        Registration registration=registrationbo.getRegistrationById(id);
       String stname=upfrontpayment.getText();
+      String amounts= amount.getText();
       String paid=tobePayment.getText();
         String courseId = courseid.getValue().toString(); // String ID from ComboBox
         Course course = coursebo.getCourseById(courseId);
@@ -150,24 +155,34 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         Student student=studentbo.getStudentById(studentId);
       String date=datelbl.getText();
 
-      RegistrationDTO registrationDTO=new RegistrationDTO(id,stname,paid,course,student,date);
+      RegistrationDTO registrationDTO=new RegistrationDTO(id,stname,amounts,course,student,date);
+        PaymentDetailsDTO paymentDetailsDTO=new PaymentDetailsDTO(date,paid,studentId,registration);
 
       boolean isAdded=registrationbo.addRegistration(registrationDTO);
-      if(isAdded){
-          cleartextFields();
-          getallRegistrations();
-          String currentRegistrationId=null;
-          currentRegistrationId=registrationbo.getCurrentRegistrationId();
-          String nextempId = generateNextregiId(currentRegistrationId);
-          regisid.setText(nextempId);
-          Alert alert=new Alert(Alert.AlertType.INFORMATION);
-          alert.setTitle("Information");
-          alert.setContentText("Registration is done");
-          alert.showAndWait();
+
+      if (isAdded) {
+          boolean isadds=registrationbo.addPaymentdetails(paymentDetailsDTO);
+          if (isadds){
+              cleartextFields();
+              getallRegistrations();
+              String currentRegistrationId=null;
+              currentRegistrationId=registrationbo.getCurrentRegistrationId();
+              String nextempId = generateNextregiId(currentRegistrationId);
+              regisid.setText(nextempId);
+              Alert alert=new Alert(Alert.AlertType.INFORMATION);
+              alert.setTitle("Information");
+              alert.setContentText("Registration is done");
+              alert.showAndWait();
+          }else {
+              Alert alert=new Alert(Alert.AlertType.ERROR);
+              alert.setTitle("Error");
+              alert.setContentText("Registration is not done1");
+              alert.showAndWait();
+          }
       } else {
           Alert alert=new Alert(Alert.AlertType.ERROR);
           alert.setTitle("Error");
-          alert.setContentText("Registration is not done");
+          alert.setContentText("Registration is not done2");
           alert.showAndWait();
       }
 
@@ -243,7 +258,7 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         RegistrationDTO registrationDTO=registrationbo.getregistrations(id);
         regisid.setText(registrationDTO.getRegi_id());
         upfrontpayment.setText(registrationDTO.getUpfront_payment());
-        tobePayment.setText(registrationDTO.getTobePaid());
+       // tobePayment.setText(registrationDTO.getTobePaid());
         mobile.setText(registrationDTO.getStudent().getTell());
         courseid.setValue(registrationDTO.getCourses().getPro_id());
         studentid.setText(registrationDTO.getStudent().getId());

@@ -1,7 +1,9 @@
 package lk.ijse.bo;
 
 import javafx.collections.ObservableList;
+import lk.ijse.dto.PaymentDetailsDTO;
 import lk.ijse.dto.RegistrationDTO;
+import lk.ijse.entity.Registration;
 
 public interface Registrationbo extends SuperBO{
     boolean addRegistration(RegistrationDTO registrationDTO);
@@ -18,5 +20,9 @@ public interface Registrationbo extends SuperBO{
     int registrationCount();
 
     String getCurrentRegistrationId();
+
+    Registration getRegistrationById(String id);
+
+    boolean addPaymentdetails(PaymentDetailsDTO paymentDetailsDTO);
 
 }

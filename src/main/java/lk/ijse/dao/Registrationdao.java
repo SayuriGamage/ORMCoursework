@@ -1,6 +1,8 @@
 package lk.ijse.dao;
 
+import lk.ijse.dto.PaymentDetailsDTO;
 import lk.ijse.dto.RegistrationDTO;
+import lk.ijse.entity.PaymentDetails;
 import lk.ijse.entity.Registration;
 
 import java.util.List;
@@ -21,5 +23,10 @@ public interface Registrationdao extends SuperDAo{
     int registrationCount();
 
     String getCurrentRegistrationId();
+
+    Registration searchregistrationbyid(String id);
+
+
+    boolean addPaymentdetails(PaymentDetails paymentDetails);
 
 }

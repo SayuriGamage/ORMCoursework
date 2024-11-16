@@ -14,7 +14,7 @@ import lombok.Setter;
 public class RegistrationDTO {
     private String regi_id;
     private String upfront_payment;
-    private String tobePaid;
+    private String amount;
     private String date;
     private Course courses;
     private Student student;
@@ -25,7 +25,7 @@ public class RegistrationDTO {
     public RegistrationDTO(String id, String stname, String paid, Course course, Student student, String date) {
         this.regi_id = id;
         this.upfront_payment = stname;
-        this.tobePaid = paid;
+        this.amount = paid;
         this.courses = course;
         this.student = student;
         this.date = date;
