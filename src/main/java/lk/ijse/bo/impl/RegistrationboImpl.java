@@ -7,8 +7,10 @@ import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.Registrationdao;
 import lk.ijse.dto.PaymentDetailsDTO;
 import lk.ijse.dto.RegistrationDTO;
+import lk.ijse.dto.StudentDTO;
 import lk.ijse.entity.PaymentDetails;
 import lk.ijse.entity.Registration;
+import lk.ijse.entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,7 @@ public class RegistrationboImpl implements Registrationbo {
     public RegistrationDTO getregistrations(String id) {
         Registration registration= registrationdao.searchregistration(id);
         return new RegistrationDTO(registration.getRegi_id(),registration.getUpfront_payment(),registration.getAmount(),registration.getDate(),registration.getCourses(),registration.getStudent());
+
     }
 
     @Override
@@ -69,6 +72,13 @@ public class RegistrationboImpl implements Registrationbo {
     @Override
     public boolean addPaymentdetails(PaymentDetailsDTO paymentDetailsDTO) {
         return registrationdao.addPaymentdetails(new PaymentDetails(paymentDetailsDTO.getDate(),paymentDetailsDTO.getTobe_paid(),paymentDetailsDTO.getStudent_id(),paymentDetailsDTO.getRegistration()));
+    }
+
+    @Override
+    public PaymentDetailsDTO getPaymentDetails(String id) {
+        PaymentDetails paymentDetails= registrationdao.searchPymentdetails(id);
+        return new PaymentDetailsDTO(paymentDetails.getPay_id(),paymentDetails.getDate(),paymentDetails.getTobe_paid(),paymentDetails.getStudent_id(),paymentDetails.getRegistration());
+
     }
 
 

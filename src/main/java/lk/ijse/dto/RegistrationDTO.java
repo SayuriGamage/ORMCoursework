@@ -1,6 +1,7 @@
 package lk.ijse.dto;
 
 import lk.ijse.entity.Course;
+import lk.ijse.entity.Registration;
 import lk.ijse.entity.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class RegistrationDTO {
         this.student = student;
         this.date = date;
     }
+
 
     public String getCourseId() {
         return courses != null ? courses.getPro_id() : "";

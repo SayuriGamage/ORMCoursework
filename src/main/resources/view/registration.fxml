@@ -91,7 +91,7 @@
           <TableColumn fx:id="colstid" prefWidth="200.80003356933594" text="Student id" />
             <TableColumn fx:id="colcourse" prefWidth="235.99993896484375" text="Course id" />
             <TableColumn fx:id="coluppayment" prefWidth="170.4000244140625" text="Upfront Payment" />
-            <TableColumn fx:id="coltotalpayment" prefWidth="169.4000244140625" text="Amount to be Paid" />
+            <TableColumn fx:id="coltotalpayment" prefWidth="169.4000244140625" text="Amount" />
         </columns>
       </TableView>
       <Button fx:id="backbutton" layoutX="7.0" layoutY="10.0" mnemonicParsing="false" onAction="#backonaction" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: #384B70FF;" text="back" textFill="WHITE">

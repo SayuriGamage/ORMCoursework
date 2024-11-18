@@ -13,6 +13,7 @@ import lk.ijse.bo.impl.BOFactory;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.Userdao;
 import lk.ijse.dto.UserDTO;
+import lk.ijse.entity.User;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
@@ -30,6 +31,7 @@ public class LoginContoller {
     Userdao userdao= (Userdao) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOTypes.user);
     Userbo userbo= (Userbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.user);
       static String liveUserRole="";
+      static  String liveUserId;
 
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
          if(userdao.ifHaveAdmins()){
@@ -58,6 +60,7 @@ public class LoginContoller {
         String username = textusername.getText();
         String password = textpassword.getText();
 
+
         if (username.isEmpty() || password.isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Please fill all the fields").show();
         } else {
@@ -67,6 +70,7 @@ public class LoginContoller {
             } else {
                 if (BCrypt.checkpw(password, userDTO.getPassword())) {
                     String role = userDTO.getRole();
+                  //  User user=userbo.getUserId(username);
                     if (role != null && role.equals("admin")) {
                         new Alert(Alert.AlertType.CONFIRMATION,"welcome admin "+username).show();
                         liveUserRole = "admin";

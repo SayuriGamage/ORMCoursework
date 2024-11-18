@@ -29,4 +29,6 @@ public interface Registrationdao extends SuperDAo{
 
     boolean addPaymentdetails(PaymentDetails paymentDetails);
 
+    PaymentDetails searchPymentdetails(String id);
+
 }

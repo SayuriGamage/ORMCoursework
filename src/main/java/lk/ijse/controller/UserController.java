@@ -30,6 +30,7 @@ public class UserController {
     public TableColumn colrole;
     public TableColumn colid;
     public TableColumn colname;
+    public Hyperlink changeapssword;
 
 
 
@@ -128,5 +129,15 @@ public class UserController {
 
     public void roleonAction(KeyEvent keyEvent) {
 
+    }
+
+    public void changePasswordAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/changePassword.fxml"));
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) changeapssword.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Login Page");
     }
 }

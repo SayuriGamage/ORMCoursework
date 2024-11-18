@@ -25,4 +25,6 @@ public interface Registrationbo extends SuperBO{
 
     boolean addPaymentdetails(PaymentDetailsDTO paymentDetailsDTO);
 
+    PaymentDetailsDTO getPaymentDetails(String id);
+
 }

@@ -88,8 +88,7 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
 
     private void setcellvaluefactory() {
       colregiid.setCellValueFactory(new PropertyValueFactory<>("regi_id"));
-      coluppayment.setCellValueFactory(new PropertyValueFactory<>("upfront_payment"));
-      coltotalpayment.setCellValueFactory(new PropertyValueFactory<>("tobePaid"));
+      coltotalpayment.setCellValueFactory(new PropertyValueFactory<>("amount"));
         colcourse.setCellValueFactory(new PropertyValueFactory<>("courseId"));
         colstid.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         coluppayment.setCellValueFactory(new PropertyValueFactory<>("upfront_payment"));
@@ -145,7 +144,7 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
 
     public void registrationOnAction(ActionEvent actionEvent) {
       String id=regisid.getText();
-        Registration registration=registrationbo.getRegistrationById(id);
+
       String stname=upfrontpayment.getText();
       String amounts= amount.getText();
       String paid=tobePayment.getText();
@@ -156,11 +155,14 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
       String date=datelbl.getText();
 
       RegistrationDTO registrationDTO=new RegistrationDTO(id,stname,amounts,course,student,date);
-        PaymentDetailsDTO paymentDetailsDTO=new PaymentDetailsDTO(date,paid,studentId,registration);
+
 
       boolean isAdded=registrationbo.addRegistration(registrationDTO);
 
+
       if (isAdded) {
+          Registration registration=registrationbo.getRegistrationById(id);
+          PaymentDetailsDTO paymentDetailsDTO=new PaymentDetailsDTO(date,paid,studentId,registration);
           boolean isadds=registrationbo.addPaymentdetails(paymentDetailsDTO);
           if (isadds){
               cleartextFields();
@@ -256,9 +258,11 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         String id=regisid.getText();
 
         RegistrationDTO registrationDTO=registrationbo.getregistrations(id);
+
+        PaymentDetailsDTO paymentDetailsDTO=registrationbo.getPaymentDetails(id);
         regisid.setText(registrationDTO.getRegi_id());
         upfrontpayment.setText(registrationDTO.getUpfront_payment());
-       // tobePayment.setText(registrationDTO.getTobePaid());
+        tobePayment.setText(paymentDetailsDTO.getTobe_paid());
         mobile.setText(registrationDTO.getStudent().getTell());
         courseid.setValue(registrationDTO.getCourses().getPro_id());
         studentid.setText(registrationDTO.getStudent().getId());
