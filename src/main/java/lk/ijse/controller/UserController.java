@@ -13,6 +13,7 @@ import lk.ijse.bo.Userbo;
 import lk.ijse.bo.impl.BOFactory;
 import lk.ijse.dto.StudentDTO;
 import lk.ijse.dto.UserDTO;
+import lk.ijse.util.Regex;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
@@ -61,14 +62,18 @@ public class UserController {
        String role = roletext.getText();
        String encript= BCrypt.hashpw(password,BCrypt.gensalt());
        UserDTO userDTO = new UserDTO( name, email,encript, role);
-       boolean result = userbo.saveUser(userDTO);
-       if (result) {
-           getallusers();
-           clearfields();
-           new Alert(Alert.AlertType.CONFIRMATION, "Registration user successful").show();
-       } else {
-           new Alert(Alert.AlertType.ERROR, "Registration user failed").show();
-       }
+      if (isValid()){
+          boolean result = userbo.saveUser(userDTO);
+          if (result) {
+              getallusers();
+              clearfields();
+              new Alert(Alert.AlertType.CONFIRMATION, "Registration user successful").show();
+          } else {
+              new Alert(Alert.AlertType.ERROR, "Registration user failed").show();
+          }
+      }else {
+          new Alert(Alert.AlertType.ERROR, "wrong inputs try again").show();
+      }
     }
 
     private void clearfields() {
@@ -116,19 +121,27 @@ public class UserController {
     }
 
     public void nameonAction(KeyEvent keyEvent) {
-
+        Regex.setTextColor(lk.ijse.util.TextField.NAME,nametext);
     }
 
     public void passwordonAction(KeyEvent keyEvent) {
-
+        Regex.setTextColor(lk.ijse.util.TextField.FEE,passwordtext);
     }
 
     public void emailOnAction(KeyEvent keyEvent) {
-
+        Regex.setTextColor(lk.ijse.util.TextField.EMAIL,emailtext);
     }
 
     public void roleonAction(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,roletext);
+    }
 
+    public boolean isValid(){
+        if (!Regex.setTextColor(lk.ijse.util.TextField.NAME,nametext)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.FEE,passwordtext)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.EMAIL,emailtext)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,roletext)) return false;
+        return true;
     }
 
     public void changePasswordAction(ActionEvent actionEvent) throws IOException {

@@ -24,6 +24,7 @@ import lk.ijse.entity.Course;
 import lk.ijse.entity.PaymentDetails;
 import lk.ijse.entity.Registration;
 import lk.ijse.entity.Student;
+import lk.ijse.util.Regex;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -157,37 +158,44 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
 
       RegistrationDTO registrationDTO=new RegistrationDTO(id,stname,amounts,course,student,date);
 
+if (isValid()){
 
-      boolean isAdded=registrationbo.addRegistration(registrationDTO);
+    boolean isAdded=registrationbo.addRegistration(registrationDTO);
 
 
-      if (isAdded) {
-          Registration registration=registrationbo.getRegistrationById(id);
-          PaymentDetailsDTO paymentDetailsDTO=new PaymentDetailsDTO(date,paid,studentId,registration);
-          boolean isadds=registrationbo.addPaymentdetails(paymentDetailsDTO);
-          if (isadds){
-              cleartextFields();
-              getallRegistrations();
-              String currentRegistrationId=null;
-              currentRegistrationId=registrationbo.getCurrentRegistrationId();
-              String nextempId = generateNextregiId(currentRegistrationId);
-              regisid.setText(nextempId);
-              Alert alert=new Alert(Alert.AlertType.INFORMATION);
-              alert.setTitle("Information");
-              alert.setContentText("Registration is done");
-              alert.showAndWait();
-          }else {
-              Alert alert=new Alert(Alert.AlertType.ERROR);
-              alert.setTitle("Error");
-              alert.setContentText("Registration is not done1");
-              alert.showAndWait();
-          }
-      } else {
-          Alert alert=new Alert(Alert.AlertType.ERROR);
-          alert.setTitle("Error");
-          alert.setContentText("Registration is not done2");
-          alert.showAndWait();
-      }
+    if (isAdded) {
+        Registration registration=registrationbo.getRegistrationById(id);
+        PaymentDetailsDTO paymentDetailsDTO=new PaymentDetailsDTO(date,paid,studentId,registration);
+        boolean isadds=registrationbo.addPaymentdetails(paymentDetailsDTO);
+        if (isadds){
+            cleartextFields();
+            getallRegistrations();
+            String currentRegistrationId=null;
+            currentRegistrationId=registrationbo.getCurrentRegistrationId();
+            String nextempId = generateNextregiId(currentRegistrationId);
+            regisid.setText(nextempId);
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setContentText("Registration is done");
+            alert.showAndWait();
+        }else {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Registration is not done1");
+            alert.showAndWait();
+        }
+    } else {
+        Alert alert=new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setContentText("Registration is not done2");
+        alert.showAndWait();
+    }
+}else {
+    Alert alert=new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setContentText("wrong inputs try again");
+    alert.showAndWait();
+}
 
     }
 
@@ -259,8 +267,13 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
 
     }
 
+    public boolean isValid(){
+        if (!Regex.setTextColor(lk.ijse.util.TextField.FEE,upfrontpayment)) return false;
+        return true;
+    }
+
 
     public void upfrontPaymentAction(KeyEvent keyEvent) {
-
+        Regex.setTextColor(lk.ijse.util.TextField.FEE,upfrontpayment);
     }
 }

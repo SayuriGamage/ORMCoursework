@@ -13,6 +13,7 @@ import lk.ijse.bo.Studentbo;
 import lk.ijse.bo.Userbo;
 import lk.ijse.bo.impl.BOFactory;
 import lk.ijse.dto.StudentDTO;
+import lk.ijse.util.Regex;
 
 import java.io.IOException;
 
@@ -81,26 +82,30 @@ public void initialize(){
     }
 
     public void saveOnAction(ActionEvent actionEvent) {
-      String id=stusid.getText();
-      String name=stname.getText();
-      String address= staddress.getText();
-      String tel=sttell.getText();
+      if (isValid()){
+          String id=stusid.getText();
+          String name=stname.getText();
+          String address= staddress.getText();
+          String tel=sttell.getText();
 
           StudentDTO studentDTO=new StudentDTO(id,name,address,tel);
-        boolean result=studentbo.saveStudent(studentDTO);
-        System.out.println("menna metanata wenakan wda 1");
-        if(result){
-         getallStudent();
-         clearfields();
-            String currentStudentId=null;
-            currentStudentId=studentbo.getCurrentStudentId();
-            String nextempId = generateNextempId(currentStudentId);
-            stusid.setText(nextempId);
-          new   Alert(Alert.AlertType.CONFIRMATION,"save Student").show();
-        }
-        else {
-            new Alert(Alert.AlertType.ERROR,"save Student").show();
-        }
+          boolean result=studentbo.saveStudent(studentDTO);
+          System.out.println("menna metanata wenakan wda 1");
+          if(result){
+              getallStudent();
+              clearfields();
+              String currentStudentId=null;
+              currentStudentId=studentbo.getCurrentStudentId();
+              String nextempId = generateNextempId(currentStudentId);
+              stusid.setText(nextempId);
+              new   Alert(Alert.AlertType.CONFIRMATION,"save Student").show();
+          }
+          else {
+              new Alert(Alert.AlertType.ERROR,"save Student").show();
+          }
+      }else {
+          new Alert(Alert.AlertType.ERROR,"wrong inputs").show();
+      }
     }
 
     public void updateOnAction(ActionEvent actionEvent) {
@@ -166,13 +171,21 @@ public void initialize(){
     }
 
     public void AddressonAction(KeyEvent keyEvent) {
-
+        Regex.setTextColor(lk.ijse.util.TextField.ADDRESS,staddress);
     }
 
     public void nameonAction(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.util.TextField.NAME,stname);
     }
 
     public void tellOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.util.TextField.MOBILE,sttell);
 
+    }
+    public boolean isValid(){
+    if (!Regex.setTextColor(lk.ijse.util.TextField.ADDRESS,staddress)) return false;
+    if (!Regex.setTextColor(lk.ijse.util.TextField.NAME,stname)) return false;
+    if (!Regex.setTextColor(lk.ijse.util.TextField.MOBILE,sttell)) return false;
+    return true;
     }
 }

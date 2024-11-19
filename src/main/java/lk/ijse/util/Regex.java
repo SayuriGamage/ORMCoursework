@@ -8,8 +8,9 @@ public class Regex {
         String field = "";
 
         switch (textField) {
-            case  ID:
-                field="";
+            case  DESCRIPTION:
+                field="^[A-Za-z]$|^[A-Za-z0-9\\s]+$\n";
+                break;
             case NAME:
                 field = "^[A-Za-z\\s]{4,}$";
                 break;
@@ -25,6 +26,9 @@ public class Regex {
                 case EMAIL:
                     field = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
                     break;
+            case FEE:
+                field = "^[0-9]{4,}$";
+                break;
         }
 
 

@@ -13,6 +13,7 @@ import lk.ijse.bo.Coursebo;
 import lk.ijse.bo.impl.BOFactory;
 import lk.ijse.dto.CourseDTO;
 import lk.ijse.dto.StudentDTO;
+import lk.ijse.util.Regex;
 
 import java.io.IOException;
 
@@ -84,22 +85,26 @@ public class CourseController {
         String duration=produration.getText();
 
         CourseDTO courseDTO =new CourseDTO(id,name,feec,duration);
-        boolean result = coursebo.saveCourse(courseDTO);
-        System.out.println("menna methanata wenakan wada");
+       if (isValid()){
+           boolean result = coursebo.saveCourse(courseDTO);
+           System.out.println("menna methanata wenakan wada");
 
-        if(result){
-            getallStudent();
-            clearfields();
-            String currentCourseId=null;
-            currentCourseId=coursebo.getCurrentCourseId();
-            String nextempId = generateNextregiId(currentCourseId);
-            proid.setText(nextempId);
-            new Alert(Alert.AlertType.CONFIRMATION,"save course").show();
+           if(result){
+               getallStudent();
+               clearfields();
+               String currentCourseId=null;
+               currentCourseId=coursebo.getCurrentCourseId();
+               String nextempId = generateNextregiId(currentCourseId);
+               proid.setText(nextempId);
+               new Alert(Alert.AlertType.CONFIRMATION,"save course").show();
 
-        } else{
-            new Alert(Alert.AlertType.ERROR,"save coourse").show();
-        }
+           } else{
+               new Alert(Alert.AlertType.ERROR,"save coourse").show();
+           }
 
+       }else {
+           new Alert(Alert.AlertType.ERROR,"wrong inputs").show();
+       }
     }
 
     public void UpdateOnAction(ActionEvent actionEvent) {
@@ -160,22 +165,27 @@ public class CourseController {
         profee.setText(courseDTO.getFee());
         produration.setText(courseDTO.getDuration());
     }
-
-
-
-    public void programmeId(KeyEvent keyEvent) {
-
+    public boolean isValid(){
+        if (!Regex.setTextColor(lk.ijse.util.TextField.NAME,proname)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.FEE,profee)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,produration)) return false;
+        return true;
     }
 
+
+
     public void nameonAction(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.util.TextField.NAME,proname);
 
     }
 
     public void feeonAction(KeyEvent keyEvent) {
-
+        Regex.setTextColor(lk.ijse.util.TextField.FEE,profee);
     }
 
+
     public void durationonAction(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,produration);
 
     }
 }
