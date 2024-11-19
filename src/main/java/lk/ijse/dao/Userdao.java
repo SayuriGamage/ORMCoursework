@@ -21,4 +21,8 @@ public interface Userdao extends Cruddao<User> {
 
     List<User> getAllUsers();
 
+    void changePassword(String email, String password);
+
+
+    boolean checkemail(String email);
 }

@@ -17,4 +17,7 @@ public interface Userbo extends SuperBO{
 
     ObservableList<UserDTO> getAllUsers();
 
+    void changePassword(String email, String password);
+
+    boolean checkemail(String email);
 }

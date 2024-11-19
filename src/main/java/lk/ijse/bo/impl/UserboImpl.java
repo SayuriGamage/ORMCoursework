@@ -62,6 +62,20 @@ public class UserboImpl implements Userbo {
         }
         return FXCollections.observableArrayList(userDTOS);
     }
+
+    @Override
+    public void changePassword(String email, String password) {
+
+        userdao.changePassword(email,password);
+    }
+
+    @Override
+    public boolean checkemail(String email) {
+
+        return userdao.checkemail(email);
+    }
+
+
 }
 
 

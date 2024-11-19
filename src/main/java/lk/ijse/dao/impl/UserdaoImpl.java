@@ -125,5 +125,39 @@ public class UserdaoImpl implements Userdao {
 
         return session.createQuery(hql, User.class).list();
     }
+
+    @Override
+    public void changePassword(String email, String password) {
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+            session.beginTransaction();
+            String hql = "UPDATE User SET password = :password WHERE email = :email";
+            session.createQuery(hql)
+                    .setParameter("password", password)
+                    .setParameter("email", email)
+                    .executeUpdate();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+    }
+
+    @Override
+    public boolean checkemail(String email) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "FROM User WHERE email = :email";
+        try {
+            User user = session.createQuery(hql, User.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+            return true;
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
+
+
 }
 
