@@ -4,6 +4,7 @@ import lk.ijse.dto.PaymentDetailsDTO;
 import lk.ijse.dto.RegistrationDTO;
 import lk.ijse.entity.PaymentDetails;
 import lk.ijse.entity.Registration;
+import org.hibernate.Session;
 
 import java.util.List;
 
@@ -31,4 +32,14 @@ public interface Registrationdao extends SuperDAo{
 
     PaymentDetails searchPymentdetails(String id);
 
+    String getpaymentId(String id);
+
+    boolean updateRegistrations(PaymentDetails paymentDetails);
+
+    boolean updateRegistration2(Registration registrations, Session session);
+
+
+    Registration getRegistrationById2(String id, Session session);
+
+    boolean updateRegistrations2(PaymentDetails paymentDetails, Session session);
 }

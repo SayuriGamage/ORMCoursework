@@ -51,7 +51,7 @@
             </Label>
             <TextField fx:id="roletext" layoutX="606.0" layoutY="68.0" onKeyReleased="#roleonAction" prefHeight="34.0" prefWidth="202.0" />
             <Label layoutX="215.0" layoutY="76.0" text="search" />
-            <Hyperlink fx:id="changeapssword" layoutX="362.0" layoutY="165.0" onAction="#changePasswordAction" text="change Password" />
+            <Hyperlink fx:id="changeapssword" layoutX="107.0" layoutY="194.0" onAction="#changePasswordAction" text="change Password" />
          </children></AnchorPane>
       <TableView fx:id="tbluser" layoutX="65.0" layoutY="455.0" prefHeight="336.0" prefWidth="867.0" style="-fx-background-color: #000000;">
         <columns>

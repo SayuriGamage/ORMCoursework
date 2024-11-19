@@ -4,6 +4,8 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 import lk.ijse.config.FactoryConfiguration;
 import lk.ijse.dao.Registrationdao;
+import lk.ijse.dto.PaymentDetailsDTO;
+import lk.ijse.dto.RegistrationDTO;
 import lk.ijse.entity.PaymentDetails;
 import lk.ijse.entity.Registration;
 import lk.ijse.entity.Student;
@@ -168,6 +170,83 @@ public class RegistrationdaoImpl implements Registrationdao {
             if (session != null) {
                 session.close();
             }
+        }
+    }
+
+    @Override
+    public String getpaymentId(String id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "SELECT pay_id FROM PaymentDetails WHERE registration = :id";
+        String paymentId = null;
+        try {
+            paymentId = (String) session.createQuery(hql)
+                    .setParameter("id", id)
+                    .setMaxResults(1)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            paymentId = null;
+        } finally {
+            session.close();
+        }
+        return paymentId;
+    }
+
+    @Override
+    public boolean updateRegistrations(PaymentDetails paymentDetails) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.merge(paymentDetails);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public boolean updateRegistration2(Registration registrations, Session session) {
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.update(registrations);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Registration getRegistrationById2(String id, Session session) {
+        return session.get(Registration.class, id);
+    }
+
+    @Override
+    public boolean updateRegistrations2(PaymentDetails paymentDetails, Session session) {
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.merge(paymentDetails);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
         }
     }
 

@@ -21,6 +21,7 @@ import lk.ijse.dto.PaymentDetailsDTO;
 import lk.ijse.dto.RegistrationDTO;
 import lk.ijse.dto.StudentDTO;
 import lk.ijse.entity.Course;
+import lk.ijse.entity.PaymentDetails;
 import lk.ijse.entity.Registration;
 import lk.ijse.entity.Student;
 
@@ -203,7 +204,9 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
 
     public void updateonAction(ActionEvent actionEvent) {
         String id=regisid.getText();
+
         String stname=upfrontpayment.getText();
+        String amounts= amount.getText();
         String paid=tobePayment.getText();
         String courseId = courseid.getValue().toString(); // String ID from ComboBox
         Course course = coursebo.getCourseById(courseId);
@@ -211,26 +214,9 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
         Student student=studentbo.getStudentById(studentId);
         String date=datelbl.getText();
 
-        RegistrationDTO registrationDTO=new RegistrationDTO(id,stname,paid,course,student,date);
+        registrationbo.update(id,stname,amounts,course,student,date,paid,studentId);
 
-        boolean isUpdated=registrationbo.updateRegistration(registrationDTO);
-        if(isUpdated){
-            cleartextFields();
-            getallRegistrations();
-            String currentRegistrationId=null;
-            currentRegistrationId=registrationbo.getCurrentRegistrationId();
-            String nextempId = generateNextregiId(currentRegistrationId);
-            regisid.setText(nextempId);
-            Alert alert=new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setContentText("update Registration is done");
-            alert.showAndWait();
-        } else {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Registration is not update");
-            alert.showAndWait();
-        }
+
     }
 
     public void coursedetailONAction(ActionEvent actionEvent) {
@@ -257,17 +243,19 @@ Registrationbo registrationbo= (Registrationbo) BOFactory.getBoFactory().getBO(B
     public void searchonaction(ActionEvent actionEvent) {
         String id=regisid.getText();
 
-        RegistrationDTO registrationDTO=registrationbo.getregistrations(id);
 
-        PaymentDetailsDTO paymentDetailsDTO=registrationbo.getPaymentDetails(id);
+        RegistrationDTO registrationDTO=registrationbo.getregistrations(id);
+        int amounts= Integer.parseInt(registrationDTO.getAmount());
+        int upfront= Integer.parseInt(registrationDTO.getUpfront_payment());
+        int tobe=amounts-upfront;
+       tobePayment.setText(String.valueOf(tobe));
         regisid.setText(registrationDTO.getRegi_id());
         upfrontpayment.setText(registrationDTO.getUpfront_payment());
-        tobePayment.setText(paymentDetailsDTO.getTobe_paid());
         mobile.setText(registrationDTO.getStudent().getTell());
         courseid.setValue(registrationDTO.getCourses().getPro_id());
         studentid.setText(registrationDTO.getStudent().getId());
         amount.setText(registrationDTO.getCourses().getFee());
-
+        coursename.setText(registrationDTO.getCourses().getPro_name());
 
     }
 

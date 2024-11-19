@@ -132,7 +132,7 @@ public class UserController {
     }
 
     public void changePasswordAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/changePassword.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/changepassword.fxml"));
         Scene scene = new Scene(rootNode);
 
         Stage stage = (Stage) changeapssword.getScene().getWindow();
