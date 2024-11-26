@@ -158,6 +158,34 @@ public class UserdaoImpl implements Userdao {
         }
     }
 
+    @Override
+    public String getuserId(String username) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "FROM User WHERE username = :username";
+        try {
+            User user = session.createQuery(hql, User.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+            return String.valueOf(user.getId());
+        }
+        catch (NoResultException e) {
+            return null;
+        }
+    }
 
+    @Override
+    public User getusera(String username) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "FROM User WHERE username = :username";
+        try {
+            User user = session.createQuery(hql, User.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+            return user;
+        }
+        catch (NoResultException e) {
+            return null;
+        }
+    }
 }
 

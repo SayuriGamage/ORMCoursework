@@ -76,13 +76,9 @@ public class DashboardController {
 
     public void usermanageOnAction(ActionEvent actionEvent) throws IOException {
       if(LoginContoller.liveUserRole.equals("admin")){
-          AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/user.fxml"));
-          Scene scene = new Scene(rootNode);
-
-          Stage stage = (Stage) userbutton.getScene().getWindow();
-          stage.setScene(scene);
-          stage.centerOnScreen();
-          stage.setTitle("Login Page");
+          AnchorPane dashi = FXMLLoader.load(getClass().getResource("/view/user.fxml"));
+          dashoboardpane.getChildren().clear();
+          dashoboardpane.getChildren().add(dashi);
       }else {
       new Alert(Alert.AlertType.ERROR,"sorry you cant access").show();
       }

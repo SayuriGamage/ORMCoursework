@@ -25,4 +25,8 @@ public interface Userdao extends Cruddao<User> {
 
 
     boolean checkemail(String email);
+
+    String getuserId(String username);
+
+    User getusera(String username);
 }

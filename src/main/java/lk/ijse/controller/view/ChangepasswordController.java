@@ -31,7 +31,7 @@ if (check){
     String password= BCrypt.hashpw(newpassword,BCrypt.gensalt());
 
     userbo.changePassword(email,password);
-    AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/user.fxml"));
+    AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
     Scene scene = new Scene(rootNode);
 
     Stage stage = (Stage) donetext.getScene().getWindow();

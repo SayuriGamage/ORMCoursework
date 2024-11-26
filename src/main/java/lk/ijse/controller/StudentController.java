@@ -13,6 +13,7 @@ import lk.ijse.bo.Studentbo;
 import lk.ijse.bo.Userbo;
 import lk.ijse.bo.impl.BOFactory;
 import lk.ijse.dto.StudentDTO;
+import lk.ijse.entity.User;
 import lk.ijse.util.Regex;
 
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class StudentController {
 
 
     Studentbo studentbo= (Studentbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.student);
+    Userbo userbo= (Userbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.user);
 
 public void initialize(){
 
@@ -87,8 +89,10 @@ public void initialize(){
           String name=stname.getText();
           String address= staddress.getText();
           String tel=sttell.getText();
+          String username=LoginContoller.liveUserId;
+          User user=userbo.getUsers(username);
 
-          StudentDTO studentDTO=new StudentDTO(id,name,address,tel);
+          StudentDTO studentDTO=new StudentDTO(id,name,address,tel,user);
           boolean result=studentbo.saveStudent(studentDTO);
           System.out.println("menna metanata wenakan wda 1");
           if(result){

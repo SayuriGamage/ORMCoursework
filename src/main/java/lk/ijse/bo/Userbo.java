@@ -2,6 +2,7 @@ package lk.ijse.bo;
 
 import javafx.collections.ObservableList;
 import lk.ijse.dto.UserDTO;
+import lk.ijse.entity.User;
 
 public interface Userbo extends SuperBO{
     UserDTO getdata(String username);
@@ -20,4 +21,8 @@ public interface Userbo extends SuperBO{
     void changePassword(String email, String password);
 
     boolean checkemail(String email);
+
+    String getuserId(String username);
+
+    User getUsers(String username);
 }

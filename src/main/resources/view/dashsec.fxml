@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" styleClass="box" stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashsecController">
+<AnchorPane opacity="0.59" prefHeight="800.0" prefWidth="1000.0" styleClass="box" stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashsecController">
    <children>
-      <AnchorPane layoutX="89.0" layoutY="137.0" prefHeight="242.0" prefWidth="369.0" styleClass="class" stylesheets="@../css/boxdashsex.css">
+      <AnchorPane layoutX="89.0" layoutY="137.0" prefHeight="474.0" prefWidth="370.0" styleClass="class" stylesheets="@../css/boxdashsex.css">
          <children>
             <Label layoutX="110.0" layoutY="34.0" text="Student Count" textFill="#000b58">
                <font>
@@ -20,8 +20,13 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <ImageView fitHeight="246.0" fitWidth="315.0" layoutX="28.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/27927.jpg" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
-      <AnchorPane layoutX="563.0" layoutY="137.0" prefHeight="242.0" prefWidth="369.0" styleClass="class" stylesheets="@../css/boxdashsex.css">
+      <AnchorPane layoutX="563.0" layoutY="137.0" prefHeight="474.0" prefWidth="370.0" styleClass="class" stylesheets="@../css/boxdashsex.css">
          <children>
             <Label layoutX="102.0" layoutY="33.0" text="Registration Count" textFill="#000b58">
                <font>
@@ -33,6 +38,11 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <ImageView fitHeight="247.0" fitWidth="339.0" layoutX="62.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/chef-concept-illustration_114360-28961.jpg" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <Label layoutX="803.0" layoutY="40.0" text=" Culinary academy" textFill="#716969">
          <font>

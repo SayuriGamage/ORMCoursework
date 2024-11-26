@@ -70,7 +70,7 @@ public class LoginContoller {
             } else {
                 if (BCrypt.checkpw(password, userDTO.getPassword())) {
                     String role = userDTO.getRole();
-                  //  User user=userbo.getUserId(username);
+                liveUserId=userbo.getuserId(username);
                     if (role != null && role.equals("admin")) {
                         new Alert(Alert.AlertType.CONFIRMATION,"welcome admin "+username).show();
                         liveUserRole = "admin";
@@ -91,6 +91,8 @@ public class LoginContoller {
     }
 
 
-
+    public void passwordAction(ActionEvent actionEvent) {
+       textpassword.requestFocus();
+    }
 }
 

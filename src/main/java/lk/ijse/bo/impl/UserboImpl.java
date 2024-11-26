@@ -75,6 +75,17 @@ public class UserboImpl implements Userbo {
         return userdao.checkemail(email);
     }
 
+    @Override
+    public String getuserId(String username) {
+
+        return userdao.getuserId(username);
+    }
+
+    @Override
+    public User getUsers(String username) {
+        return userdao.getusera(username);
+    }
+
 
 }
 
