@@ -145,5 +145,21 @@ public class RegistrationboImpl implements Registrationbo {
         }
     }
 
+    @Override
+    public ObservableList<PaymentDetailsDTO> getAllPaymentDetails() {
+        List<PaymentDetails> paymentDetails=registrationdao.getAllPaymentDetails();
+        List<PaymentDetailsDTO> paymentDetailsDTOS=new ArrayList<>();
+        for(PaymentDetails paymentDetail: paymentDetails){
+            paymentDetailsDTOS.add(new PaymentDetailsDTO(paymentDetail.getPay_id(),paymentDetail.getDate(),paymentDetail.getTobe_paid(),paymentDetail.getStudent_id(),paymentDetail.getRegistration()));
+        }
+        return FXCollections.observableArrayList(paymentDetailsDTOS);
+    }
+
+    @Override
+    public PaymentDetailsDTO getPaymentDetailss(String regiid) {
+        return registrationdao.getPaymentDetailss(regiid);
+    }
+
+
 
 }

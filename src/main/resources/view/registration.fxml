@@ -94,10 +94,5 @@
             <TableColumn fx:id="coltotalpayment" prefWidth="169.4000244140625" text="Amount" />
         </columns>
       </TableView>
-      <Button fx:id="backbutton" layoutX="7.0" layoutY="10.0" mnemonicParsing="false" onAction="#backonaction" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: #384B70FF;" text="back" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

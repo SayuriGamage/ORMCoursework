@@ -26,4 +26,7 @@ public class PaymentDetailsDTO {
       this.registration = registration;
 
     }
+    public String getRegistrationId() {
+        return registration != null ? registration.getRegi_id() : "";
+    }
 }

@@ -9,7 +9,7 @@ public class Regex {
 
         switch (textField) {
             case  DESCRIPTION:
-                field="^[A-Za-z]$|^[A-Za-z0-9\\s]+$\n";
+                field="^[A-Za-z0-9 .,!?'-]+$\n";
                 break;
             case NAME:
                 field = "^[A-Za-z\\s]{4,}$";

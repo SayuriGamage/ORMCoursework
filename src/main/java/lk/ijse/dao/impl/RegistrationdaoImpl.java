@@ -250,5 +250,68 @@ public class RegistrationdaoImpl implements Registrationdao {
         }
     }
 
+    @Override
+    public List<PaymentDetails> getAllPaymentDetails() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("FROM PaymentDetails");
+            List<PaymentDetails> paymentDetailsList = query.getResultList();
+            session.getTransaction().commit();
+            return paymentDetailsList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Override
+    public List<PaymentDetails> getAllPaymentDetailsforpayment(String regiid) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("FROM PaymentDetails WHERE registration = :regiid");
+            query.setParameter("regiid", regiid);
+            List<PaymentDetails> paymentDetailsList = query.getResultList();
+            session.getTransaction().commit();
+            return paymentDetailsList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    @Override
+    public PaymentDetailsDTO getPaymentDetailss(String regiid) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("FROM PaymentDetails WHERE registration = :regiid");
+            query.setParameter("regiid", regiid);
+            PaymentDetails paymentDetails = (PaymentDetails) query.getSingleResult();
+            PaymentDetailsDTO paymentDetailsDTO = new PaymentDetailsDTO(paymentDetails.getDate(),paymentDetails.getTobe_paid(),paymentDetails.getStudent_id(),paymentDetails.getRegistration());
+            session.getTransaction().commit();
+            return paymentDetailsDTO;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
 
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="studenttbl" prefHeight="783.0" prefWidth="1000.0" style="-fx-background-color: #003161;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.StudentController">
+<AnchorPane fx:id="studenttbl" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #003161;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.StudentController">
    <children>
       <Label layoutX="398.0" layoutY="41.0" text="Student Form" textFill="WHITE">
          <font>
@@ -68,10 +68,5 @@
             <TableColumn fx:id="sttbluserId" prefWidth="164.80002441406248" text="name" />
         </columns>
       </TableView>
-      <Button fx:id="backbutton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#updatebackOnActionnAction" prefHeight="41.0" prefWidth="127.0" style="-fx-background-color: #345dcf;" text="back" textFill="#e9ecf4">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

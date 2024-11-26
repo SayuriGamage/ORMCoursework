@@ -133,14 +133,14 @@ public class UserController {
     }
 
     public void roleonAction(KeyEvent keyEvent) {
-        Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,roletext);
+        Regex.setTextColor(lk.ijse.util.TextField.NAME,roletext);
     }
 
     public boolean isValid(){
         if (!Regex.setTextColor(lk.ijse.util.TextField.NAME,nametext)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.FEE,passwordtext)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.EMAIL,emailtext)) return false;
-        if (!Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,roletext)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.NAME,roletext)) return false;
         return true;
     }
 

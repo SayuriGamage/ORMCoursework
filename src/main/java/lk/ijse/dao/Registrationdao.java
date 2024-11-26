@@ -42,4 +42,11 @@ public interface Registrationdao extends SuperDAo{
     Registration getRegistrationById2(String id, Session session);
 
     boolean updateRegistrations2(PaymentDetails paymentDetails, Session session);
+
+    List<PaymentDetails> getAllPaymentDetails();
+
+    List<PaymentDetails> getAllPaymentDetailsforpayment(String regiid);
+
+    PaymentDetailsDTO getPaymentDetailss(String regiid);
+
 }

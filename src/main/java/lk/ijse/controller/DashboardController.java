@@ -22,67 +22,56 @@ public class DashboardController {
     public Button regisbutton;
     public Label lblstudentcount;
     public Label lblregistrationcount;
+    public Button paymentbuttonid;
+    public AnchorPane dashoboardpane;
+    public Button userbutton1;
+
 
     Studentbo studentbo = (Studentbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.student);
     Registrationbo registrationbo = (Registrationbo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.regi);
 
-    public void initialize(){
-        setStudentCount();
-        setRegistrationCount();
+    public void initialize() throws IOException {
+
+        loaddashboardsec();
     }
 
-    private void setRegistrationCount() {
-        try {
-            int registrationCount = registrationbo.registrationCount();
-            lblregistrationcount.setText(String.valueOf(registrationCount));
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to load registration count").show();
-        }
+    private void loaddashboardsec() throws IOException {
+        AnchorPane dashi= FXMLLoader.load(this.getClass().getResource("/view/dashsec.fxml"));
+        dashoboardpane.getChildren().clear();
+        dashoboardpane.getChildren().add(dashi);
     }
 
-    private void setStudentCount() {
-        try {
-            int studentCount = studentbo.StudentCount();
-            lblstudentcount.setText(String.valueOf(studentCount));
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Failed to load student count").show();
-        }
-    }
 
 
     public void registrationOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/registration.fxml"));
+       /* AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/registration.fxml"));
 
         Scene scene = new Scene(rootNode);
 
         Stage stage = (Stage) regisbutton.getScene().getWindow();
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setTitle("Login Page");
+        stage.setTitle("Login Page");*/
+        AnchorPane dashi= FXMLLoader.load(this.getClass().getResource("/view/registration.fxml"));
+        dashoboardpane.getChildren().clear();
+        dashoboardpane.getChildren().add(dashi);
+
     }
 
     public void courseOnAction(ActionEvent actionEvent) throws IOException {
        if (LoginContoller.liveUserRole.equals("admin")){
-           AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/course.fxml"));
-           Scene scene = new Scene(rootNode);
-
-           Stage stage = (Stage) coursebutton.getScene().getWindow();
-           stage.setScene(scene);
-           stage.centerOnScreen();
-           stage.setTitle("Login Page");
+           AnchorPane dashi = FXMLLoader.load(getClass().getResource("/view/course.fxml"));
+           dashoboardpane.getChildren().clear();
+           dashoboardpane.getChildren().add(dashi);
        }else {
            new Alert(Alert.AlertType.ERROR,"sorry you cant access").show();
        }
     }
 
     public void customerOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/Student.fxml"));
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) studentbutton.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Login Page");
+        AnchorPane dashi = FXMLLoader.load(getClass().getResource("/view/Student.fxml"));
+        dashoboardpane.getChildren().clear();
+        dashoboardpane.getChildren().add(dashi);
     }
 
     public void usermanageOnAction(ActionEvent actionEvent) throws IOException {
@@ -98,5 +87,17 @@ public class DashboardController {
       new Alert(Alert.AlertType.ERROR,"sorry you cant access").show();
       }
 
+    }
+
+    public void paymentOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane dashi = FXMLLoader.load(getClass().getResource("/view/payment_details.fxml"));
+        dashoboardpane.getChildren().clear();
+        dashoboardpane.getChildren().add(dashi);
+    }
+
+    public void dashboardsecAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane dashi= FXMLLoader.load(this.getClass().getResource("/view/dashsec.fxml"));
+        dashoboardpane.getChildren().clear();
+        dashoboardpane.getChildren().add(dashi);
     }
 }

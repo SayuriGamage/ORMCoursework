@@ -168,7 +168,7 @@ public class CourseController {
     public boolean isValid(){
         if (!Regex.setTextColor(lk.ijse.util.TextField.NAME,proname)) return false;
         if (!Regex.setTextColor(lk.ijse.util.TextField.FEE,profee)) return false;
-        if (!Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,produration)) return false;
+        if (!Regex.setTextColor(lk.ijse.util.TextField.NAME,produration)) return false;
         return true;
     }
 
@@ -185,7 +185,7 @@ public class CourseController {
 
 
     public void durationonAction(KeyEvent keyEvent) {
-        Regex.setTextColor(lk.ijse.util.TextField.DESCRIPTION,produration);
+        Regex.setTextColor(lk.ijse.util.TextField.NAME,produration);
 
     }
 }

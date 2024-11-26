@@ -61,6 +61,5 @@
             <TableColumn fx:id="colemail" prefWidth="231.199951171875" text="Email" />
         </columns>
       </TableView>
-      <Button fx:id="backuser" layoutX="28.0" layoutY="14.0" mnemonicParsing="false" onAction="#backAction" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #384B70FF;" text="back" textFill="WHITE" />
    </children>
 </AnchorPane>

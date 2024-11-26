@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.view.PaymentDetailsController">
+   <children>
+      <TableView fx:id="tblpaymentdetails" layoutX="50.0" layoutY="226.0" prefHeight="540.0" prefWidth="899.0">
+        <columns>
+          <TableColumn fx:id="registrationid" prefWidth="153.59997177124023" text="Registration id" />
+          <TableColumn fx:id="date" prefWidth="192.800048828125" text="date" />
+            <TableColumn fx:id="studentid" prefWidth="184.79995727539062" text="StudentId" />
+            <TableColumn fx:id="paymentid" prefWidth="164.800048828125" text="Paymentid" />
+            <TableColumn fx:id="tobepaid" prefWidth="204.0" text="toBePaid" />
+        </columns>
+      </TableView>
+      <Label layoutX="407.0" layoutY="14.0" text="Payment Details" textFill="#e1cccc">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="153.0" layoutY="91.0" prefHeight="26.0" prefWidth="216.0" text="Enter your registration id here " textFill="#fcf9f9">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="regiidhere" layoutX="145.0" layoutY="122.0" onAction="#loadupdatepaymnetAction" prefHeight="38.0" prefWidth="262.0" />
+      <Label layoutX="300.0" layoutY="104.0" text="search" textFill="#171817" />
+      <Label fx:id="greentext" layoutX="484.0" layoutY="121.0" prefHeight="26.0" prefWidth="216.0" textFill="#1fd471">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="redtext" layoutX="484.0" layoutY="134.0" prefHeight="26.0" prefWidth="216.0" textFill="#b72020">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

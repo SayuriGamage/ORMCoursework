@@ -66,6 +66,5 @@
             <TableColumn fx:id="colfee" prefWidth="167.199951171875" text="Fee" />
         </columns>
       </TableView>
-      <Button fx:id="backid" layoutX="37.0" layoutY="25.0" mnemonicParsing="false" onAction="#backonaction" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #345DCFFF;" text="back" textFill="WHITE" />
    </children>
 </AnchorPane>

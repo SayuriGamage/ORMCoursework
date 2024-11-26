@@ -28,7 +28,6 @@ public class Registration {
     @JoinColumn(name = "student_id")
     private Student student;
 
-
     @OneToMany(mappedBy = "registration", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private List<PaymentDetails> paymentDetails ;
 

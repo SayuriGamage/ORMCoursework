@@ -251,7 +251,6 @@ if (isValid()){
     public void searchonaction(ActionEvent actionEvent) {
         String id=regisid.getText();
 
-
         RegistrationDTO registrationDTO=registrationbo.getregistrations(id);
         int amounts= Integer.parseInt(registrationDTO.getAmount());
         int upfront= Integer.parseInt(registrationDTO.getUpfront_payment());

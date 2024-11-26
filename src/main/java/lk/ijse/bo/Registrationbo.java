@@ -38,4 +38,9 @@ public interface Registrationbo extends SuperBO{
 
     void update(String id, String stname, String amounts, Course course, Student student, String date, String paid,String studentid);
 
+    ObservableList<PaymentDetailsDTO> getAllPaymentDetails();
+
+
+    PaymentDetailsDTO getPaymentDetailss(String regiid);
+
 }
