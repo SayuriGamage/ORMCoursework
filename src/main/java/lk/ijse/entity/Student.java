@@ -25,6 +25,7 @@ public class Student {
     @JoinColumn(name = "user_id")
     private User user;
 
+    /*  @OneToMany(mappedBy = "student", fetch = FetchType.LAZY) // FetchType.LAZY*/
     @OneToMany(mappedBy = "student", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Registration> registrations;
 

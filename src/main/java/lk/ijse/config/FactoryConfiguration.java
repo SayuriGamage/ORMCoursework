@@ -25,4 +25,28 @@ public class FactoryConfiguration {
     public Session getSession(){
         return sessionFactory.openSession();
     }
+
+
+    /*// 1. Load Configurations
+Configuration configuration = new Configuration().configure();
+
+// 2. Build Service Registry
+StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+    .applySettings(configuration.getProperties())
+    .build();
+
+// 3. Build SessionFactory
+SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
+// 4. Open Session
+Session session = sessionFactory.openSession();
+
+// 5. DB Operations
+session.beginTransaction();
+session.save(new Customer("John Doe"));
+session.getTransaction().commit();
+session.close();
+*/
+
+
 }
